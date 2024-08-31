@@ -1,0 +1,1 @@
+export default exercises = ["Burpees", "Mountain Climbers", "Squats", "Jumping Jacks", "Jumprope", "Lunges", "Shuttle Runs", "High Knees", "Planks", "Press Ups", "Stair Runs", "Kettlebell Swings", "Kettlebell Squat Swings", "Goblet Squat", "Kettlebell Deadlift", "Kettlebell Clean", "Kettlebell Press", "Kettlebell Row", "Pull ups", ]

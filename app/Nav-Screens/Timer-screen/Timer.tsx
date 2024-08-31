@@ -2,17 +2,16 @@ import { Text, View } from "react-native";
 
 
 
-export default function Circuits() {
+export default function Timer() {
     return (
         <View
         style={{
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "red"
-          }}
-          >
-            <Text>This is where you set the circuits</Text>
+            backgroundColor: "#4b7553"
+          }}>
+            <Text>This is where you see the timer</Text>
         </View>
     )
 }
