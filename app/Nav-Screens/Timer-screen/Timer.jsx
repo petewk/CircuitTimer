@@ -9,20 +9,16 @@ import { CircuitContext } from "../Circuits-screen/context/circuitContextProvido
 
 export default function Timer() {
 
-    const {activityNum} = useContext(TimerContext);
+    const {activityNum, secondsLeft, startTimer} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
 
     const [timeLeft, setTimeLeft] = useState();
     
 
-    function startTimer(){
-       setTimeLeft(circuits[activityNum].duration); 
-        setInterval(()=>{
-            holder = timeLeft -1;
-            setTimeLeft(holder);
-        }, 1000)
-    }
 
+    useEffect(()=>{
+        console.log(secondsLeft)
+    }, [secondsLeft])
 
     
     return (
@@ -37,7 +33,7 @@ export default function Timer() {
           }}>
             <View style={styles.thisRound}>
                 <Text>{activityNum}</Text>
-                <Text style={styles.countdown}>{timeLeft}</Text>
+                <Text style={styles.countdown}>{secondsLeft}</Text>
                 <Text style={styles.currentEx}>{circuits[activityNum].exercise}</Text>
             </View>
             <TouchableHighlight style={{height: 40}} onPress={startTimer}><Text>Press to start</Text></TouchableHighlight>
