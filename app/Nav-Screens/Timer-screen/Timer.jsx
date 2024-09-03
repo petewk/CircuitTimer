@@ -1,13 +1,9 @@
 import { useContext, useState, useEffect } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 
 // Contexts
 import { TimerContext } from "./context/timerContext";
 import { CircuitContext } from "../Circuits-screen/context/circuitContextProvidor";
-
-
-
-
 
 
 
@@ -16,15 +12,15 @@ export default function Timer() {
     const {activityNum} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
 
-    const [timeLeft, setTimeLeft] = useState(circuits[0].duration)
-
-
-    const countdownInt = setInterval(()=>{
-        setTimeLeft(timeLeft -1)
-    }, 1000);
+    const [timeLeft, setTimeLeft] = useState();
     
-    if(timeLeft === 0){
-        clearInterval(countdownInt)
+
+    function startTimer(){
+       setTimeLeft(circuits[activityNum].duration); 
+        setInterval(()=>{
+            holder = timeLeft -1;
+            setTimeLeft(holder);
+        }, 1000)
     }
 
 
@@ -44,6 +40,7 @@ export default function Timer() {
                 <Text style={styles.countdown}>{timeLeft}</Text>
                 <Text style={styles.currentEx}>{circuits[activityNum].exercise}</Text>
             </View>
+            <TouchableHighlight style={{height: 40}} onPress={startTimer}><Text>Press to start</Text></TouchableHighlight>
             <View style={styles.nextRound}>
                 <Text>Up next: </Text>
                 <Text>{circuits[activityNum +1].exercise}</Text>
