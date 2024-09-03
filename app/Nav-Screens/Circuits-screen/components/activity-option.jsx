@@ -30,8 +30,6 @@ export const ActivityOption = ({thisActivity}) => {
     
     const {startCircuits, addExercise} = useContext(CircuitContext);
 
-    console.log(addExercise)
-
     const name = thisActivity;
 
     return (

@@ -46,8 +46,11 @@ export default function Circuits() {
 
     const [windowPos, setWindowPos] = useState('-100%')
 
-    const circuits = useContext(CircuitContext)
-    
+    const context = useContext(CircuitContext)
+
+    let circuits = context.circuits;
+
+
     
     function addActivity(){
         setWindowPos('5%')
@@ -72,8 +75,8 @@ export default function Circuits() {
             <SelectionModal windowPosition={windowPos} closeFunction={closeWindow}/>
             <Text>This is where you set the circuits</Text>
             <SetExerciseList
-                data={circuits.startCircuits} 
-                renderItem={({item})=><ExerciseBar key={item.index} activity={item} />}
+                data={circuits} 
+                renderItem={({item})=><ExerciseBar key={circuits.indexOf(item)} index={circuits.indexOf(item)} activity={item} />}
                 contentContainerStyle={{justifyContent: 'center', alignItems:'center'}}
                 />
             <AddButton onPress={addActivity}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>

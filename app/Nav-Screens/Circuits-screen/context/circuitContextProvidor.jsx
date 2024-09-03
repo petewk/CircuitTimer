@@ -9,46 +9,45 @@ export const CircuitContext = createContext();
 
 export const CircuitContextProvidor = ({children})=>{
 
-    function addActivity(){
-        null
-    }
-
-    function addExercise(clicked){
-        let holderObj = {
-            index: startCircuits.length,
-            exercise: clicked,
-            duration: 40
-        };
-
-        console.log(clicked)
-        startCircuits.push(holderObj);
-    }
-
-    const startCircuits = [
+    const [circuits, setCircuits] = useState([
         {
-            index:1,
             exercise:'Press-ups',
             duration: 40
         },
         {
-            index:2,
             exercise:'Sit-ups',
             duration: 40
         },
         {
-            index:3,
             exercise:'Plank',
             duration: 40
         },
         {
-            index:4,
             exercise:'Plank',
             duration: 40
         }
-    ]
+    ])
+
+
+    function addExercise(clicked){
+        let holderObj = {
+            index: circuits.length,
+            exercise: clicked,
+            duration: 40
+        };
+
+        setCircuits([...circuits, holderObj])
+    }
+
+    function deleteExercise(clicked){
+        let holderArray = circuits;
+        holderArray.splice(clicked, 1);
+        setCircuits([...holderArray]);
+        
+    }
 
     return (
-        <CircuitContext.Provider value={{startCircuits, addExercise}}>
+        <CircuitContext.Provider value={{circuits, addExercise, deleteExercise}}>
             {children}
         </CircuitContext.Provider>
     )

@@ -62,13 +62,6 @@ export const SelectionModal = ({windowPosition, closeFunction}) => {
         <SelectionWindow style={{left: windowPosition}} id="">
             <InnerContainer>
                 <CloseButton onPress={closeFunction}><Text style={{color:'white'}}>X</Text></CloseButton>
-                {/* {
-                    exercises.map((activity)=>{
-                        return(
-                            <ActivityOption thisActivity={activity}/>
-                        )
-                    })
-                } */}
                 <ButtonsList
                 contentContainerStyle={{alignItems:'center'}}
                 renderItem={({item})=><ActivityOption thisActivity={item}/>}
