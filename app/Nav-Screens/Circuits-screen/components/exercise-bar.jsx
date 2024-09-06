@@ -32,10 +32,10 @@ export const ExerciseBar = ({activity, index}) => {
 
     return (
         <ActivityContainer>
-            <ActivityText>{index +1}.</ActivityText>
-            <ActivityText>{activity.exercise}</ActivityText>
-            <ActivityText>{activity.duration}s</ActivityText>
-            <TouchableHighlight onPress={()=>{deleteFunc(index)}}><Text>X</Text></TouchableHighlight>
+            <ActivityText style={{flex:1}}>{index +1}.</ActivityText>
+            <ActivityText style={{flex:4}}>{activity.exercise}</ActivityText>
+            <ActivityText style={{flex:2}}>{activity.duration}s</ActivityText>
+            <TouchableHighlight style={{flex:1}} onPress={()=>{deleteFunc(index)}}><Text style={{textAlign: 'center'}}>X</Text></TouchableHighlight>
             
         </ActivityContainer>
     )

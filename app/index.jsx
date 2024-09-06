@@ -29,7 +29,7 @@ export default function Index() {
         <CircuitContextProvidor>
           <TimerContextProvider>
             <homeStack.Navigator 
-              initialRouteName="Timer"
+              initialRouteName="Circuits"
               >
               <homeStack.Screen options={{
                 tabBarIcon: () => (

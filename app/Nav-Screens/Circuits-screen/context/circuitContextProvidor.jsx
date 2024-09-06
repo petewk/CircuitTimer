@@ -12,7 +12,7 @@ export const CircuitContextProvidor = ({children})=>{
     const [circuits, setCircuits] = useState([
         {
             exercise:'Press-ups',
-            duration: 40
+            duration: 20
         },
         {
             exercise:'Sit-ups',

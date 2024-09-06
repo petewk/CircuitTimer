@@ -9,37 +9,42 @@ import { CircuitContext } from "../Circuits-screen/context/circuitContextProvido
 
 export default function Timer() {
 
-    const {activityNum, secondsLeft, startTimer} = useContext(TimerContext);
+    const {activityNum, secondsLeft, startTimer, flash} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
 
     const [timeLeft, setTimeLeft] = useState();
     
 
-
     useEffect(()=>{
         console.log(secondsLeft)
+        
     }, [secondsLeft])
+
+    const flashColors = {
+        true: '#ab2626',
+        false: '#4b7553'
+    }
 
     
     return (
-        <View
+        <View id=""
         style={{
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#4b7553",
+            backgroundColor: flashColors[flash],
             paddingTop: 30,
             paddingBottom: 100,
           }}>
             <View style={styles.thisRound}>
-                <Text>{activityNum}</Text>
+                <Text style={{fontSize: 25, color: 'grey'}}>{activityNum +1} / {circuits.length}</Text>
                 <Text style={styles.countdown}>{secondsLeft}</Text>
                 <Text style={styles.currentEx}>{circuits[activityNum].exercise}</Text>
             </View>
-            <TouchableHighlight style={{height: 40}} onPress={startTimer}><Text>Press to start</Text></TouchableHighlight>
+            <TouchableHighlight style={styles.pressStart} onPress={startTimer}><Text style={{textAlign: 'center'}}>Press to start</Text></TouchableHighlight>
             <View style={styles.nextRound}>
-                <Text>Up next: </Text>
-                <Text>{circuits[activityNum +1].exercise}</Text>
+                <Text style={styles.nextText}>Up next: </Text>
+                <Text style={styles.nextText}>{circuits[activityNum +1].exercise}</Text>
             </View>
         </View>
     )
@@ -47,26 +52,39 @@ export default function Timer() {
 }
 const styles = StyleSheet.create({
     thisRound:{
-        flex: 2,
+        flex: 4,
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
         borderColor: 'white',
+        width: '100%'
     },
     currentEx: {
         color: 'grey',
         fontSize: 50
     },
+    pressStart:{
+        height: '100px',
+        flex: 1,
+        width: '80%',
+        justifyContent: 'center',
+        backgroundColor: '#ffffff20'
 
+    },
     countdown: {
         fontSize: 75,
         color: 'grey'
     },
     nextRound: {
-        flex: 1,
+        flex: 2,
         justifyContent: "center",
         alignItems: 'center',
         borderColor: 'white',
-        borderWidth: 1
+        borderWidth: 1,
+        width: '100%',
+    },
+    nextText: {
+        fontSize: 25,
+        color: 'grey',
     }
 })
