@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 const OptionsWindow = styled.View`
     width: 90%;
     height: 90%;
-    background-color: "#75744b";
+    background-color: "#bab150";
     position: fixed;
     right: 110%;
 `

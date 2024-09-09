@@ -13,21 +13,17 @@ import { CircuitContext } from "../Circuits-screen/context/circuitContextProvido
 
 export default function Timer() {
 
-    const {activityNum, secondsLeft, startTimer, flash, paused} = useContext(TimerContext);
+    const { flash } = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
-
-    const [timeLeft, setTimeLeft] = useState();
+    const [counter, setCounter] = useState(0)
     
 
-    useEffect(()=>{
-        console.log(secondsLeft)
-        
-    }, [secondsLeft])
 
     const flashColors = {
         true: '#ab2626',
         false: '#4b7553'
     }
+
 
     
     return (
@@ -41,23 +37,18 @@ export default function Timer() {
             paddingBottom: 100,
           }}>
             <View style={styles.thisRound}>
-                <Text style={{fontSize: 25, color: 'grey'}}>{activityNum +1} / {circuits.length}</Text>
-                <Text style={styles.countdown}>{secondsLeft}</Text>
-                <Text style={styles.currentEx}>{circuits[activityNum].exercise}</Text>
+                <Text style={{fontSize: 25, color: 'grey'}}></Text>
+                <Text style={styles.countdown}></Text>
+                <Text style={styles.currentEx}></Text>
             </View>
-            <TouchableHighlight style={styles.pressStart} onPress={startTimer}>
+            <TouchableHighlight style={styles.pressStart} onPress={null}>
                 <Text style={{textAlign: 'center'}}>
-                    {
-                        paused ? 
-                        <FontAwesomeIcon icon={faPause} />
-                        :
-                        <FontAwesomeIcon icon={faPlay} />
-                    }
+                    <FontAwesomeIcon icon={faPlay} />
                 </Text>
             </TouchableHighlight>
             <View style={styles.nextRound}>
                 <Text style={styles.nextText}>Up next: </Text>
-                <Text style={styles.nextText}>{circuits[activityNum +1].exercise}</Text>
+                <Text style={styles.nextText}>next ex</Text>
             </View>
         </View>
     )

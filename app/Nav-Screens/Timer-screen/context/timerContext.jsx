@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, useEffect } from "react";
 import { Vibration } from "react-native";
 
 import { CircuitContext } from "../../Circuits-screen/context/circuitContextProvidor";
@@ -6,21 +6,18 @@ import { CircuitContext } from "../../Circuits-screen/context/circuitContextProv
 
 export const TimerContext = createContext();
 
-const Pattern = [
-    0, 400, 200, 400
-]
 
 
 export const TimerContextProvider = ({children})=>{
 
-    const [activityNum, setActivityNum] = useState(0);
-    const [secondsLeft, setSecondsLeft] = useState(0);
-    const [flash, setFlash] = useState(false)
-    const [paused, setPaused] = useState(null)
+    let currentRound = 1;
+
     const { circuits } = useContext(CircuitContext)
+    const [flash, setFlash] = useState(false);
 
 
-    function flashScreen(pause, duration){
+
+    function flashScreen(wait, duration){
         setFlash(true)
         setTimeout(()=>{
             setFlash(false)
@@ -29,57 +26,15 @@ export const TimerContextProvider = ({children})=>{
                 setTimeout(()=>{
                     setFlash(false)
                 }, duration)
-            }, pause)
+            }, wait)
         }, duration)
-
     }
-
-    function roundEnd(){   
-        setTimeout(()=>{
-            setActivityNum(activityNum +1)
-            startTimer();
-        }, 5000)
-        flashScreen(200, 400);
-        Vibration.vibrate(Pattern, false)
-        console.log("time's up, get ready");
-    }
-
-
-    function startTimer(){
-        counter = circuits[activityNum].duration;
-        if(paused === null){
-            setPaused(false)
-            setSecondsLeft(counter);
-            const counting = setInterval(()=>{
-                if(counter!=0 && paused === false){
-                    counter --
-                }
-                setSecondsLeft(counter)
-                if(counter === 0){
-                    clearInterval(counting);
-                    roundEnd()
-                }
-            }, 1000)
-        } else if(paused === true){
-            setPaused(false)
-            console.log(paused)
-        } else {
-            setPaused(true)
-            console.log(paused)
-        }
-
-    }
-
 
 
     return (
         <TimerContext.Provider
             value={{
-                activityNum,
-                secondsLeft,
-                startTimer, 
                 flash,
-                paused
             }}
         >
             {children}

@@ -21,7 +21,7 @@ const ActivityText = styled.Text`
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 17;
+    font-size: 17px;
 `
 
 export const ExerciseBar = ({activity, index}) => {
