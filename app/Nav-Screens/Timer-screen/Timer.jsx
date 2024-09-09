@@ -11,12 +11,13 @@ import { CircuitContext } from "../Circuits-screen/context/circuitContextProvido
 
 
 
+
 export default function Timer() {
 
-    const { flash } = useContext(TimerContext);
+    const { flash, secondsLeft, paused, playPause, roundNum} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
-    const [counter, setCounter] = useState(0)
     
+
 
 
     const flashColors = {
@@ -37,18 +38,24 @@ export default function Timer() {
             paddingBottom: 100,
           }}>
             <View style={styles.thisRound}>
-                <Text style={{fontSize: 25, color: 'grey'}}></Text>
-                <Text style={styles.countdown}></Text>
-                <Text style={styles.currentEx}></Text>
+                <Text style={{fontSize: 25, color: 'grey'}}>{roundNum +1}</Text>
+                <Text style={styles.countdown}>{secondsLeft}</Text>
+                <Text style={styles.currentEx}>{circuits[roundNum].exercise}</Text>
             </View>
-            <TouchableHighlight style={styles.pressStart} onPress={null}>
+            <TouchableHighlight style={styles.pressStart} onPress={playPause}>
                 <Text style={{textAlign: 'center'}}>
                     <FontAwesomeIcon icon={faPlay} />
                 </Text>
             </TouchableHighlight>
             <View style={styles.nextRound}>
                 <Text style={styles.nextText}>Up next: </Text>
-                <Text style={styles.nextText}>next ex</Text>
+                {
+                    !circuits[roundNum+1] ? 
+                    <Text style={styles.nextText}>A REST!</Text>
+                    :
+                    <Text style={styles.nextText}>{circuits[roundNum+1].exercise}</Text>
+
+                }
             </View>
         </View>
     )
