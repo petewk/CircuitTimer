@@ -1,6 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faPause } from '@fortawesome/free-solid-svg-icons/faPause';
+import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
+
 // Contexts
 import { TimerContext } from "./context/timerContext";
 import { CircuitContext } from "../Circuits-screen/context/circuitContextProvidor";
@@ -9,7 +13,7 @@ import { CircuitContext } from "../Circuits-screen/context/circuitContextProvido
 
 export default function Timer() {
 
-    const {activityNum, secondsLeft, startTimer, flash} = useContext(TimerContext);
+    const {activityNum, secondsLeft, startTimer, flash, paused} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
 
     const [timeLeft, setTimeLeft] = useState();
@@ -41,7 +45,16 @@ export default function Timer() {
                 <Text style={styles.countdown}>{secondsLeft}</Text>
                 <Text style={styles.currentEx}>{circuits[activityNum].exercise}</Text>
             </View>
-            <TouchableHighlight style={styles.pressStart} onPress={startTimer}><Text style={{textAlign: 'center'}}>Press to start</Text></TouchableHighlight>
+            <TouchableHighlight style={styles.pressStart} onPress={startTimer}>
+                <Text style={{textAlign: 'center'}}>
+                    {
+                        paused ? 
+                        <FontAwesomeIcon icon={faPause} />
+                        :
+                        <FontAwesomeIcon icon={faPlay} />
+                    }
+                </Text>
+            </TouchableHighlight>
             <View style={styles.nextRound}>
                 <Text style={styles.nextText}>Up next: </Text>
                 <Text style={styles.nextText}>{circuits[activityNum +1].exercise}</Text>

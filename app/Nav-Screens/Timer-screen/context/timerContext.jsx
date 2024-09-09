@@ -16,6 +16,7 @@ export const TimerContextProvider = ({children})=>{
     const [activityNum, setActivityNum] = useState(0);
     const [secondsLeft, setSecondsLeft] = useState(0);
     const [flash, setFlash] = useState(false)
+    const [paused, setPaused] = useState(null)
     const { circuits } = useContext(CircuitContext)
 
 
@@ -46,19 +47,29 @@ export const TimerContextProvider = ({children})=>{
 
     function startTimer(){
         counter = circuits[activityNum].duration;
-        setSecondsLeft(counter);
-        const counting = setInterval(()=>{
-            if(counter!=0){
-                counter --
-            }
-            setSecondsLeft(counter)
-            if(counter === 0){
-                clearInterval(counting);
-                roundEnd()
-            }
-        }, 1000)
+        if(paused === null){
+            setPaused(false)
+            setSecondsLeft(counter);
+            const counting = setInterval(()=>{
+                if(counter!=0 && paused === false){
+                    counter --
+                }
+                setSecondsLeft(counter)
+                if(counter === 0){
+                    clearInterval(counting);
+                    roundEnd()
+                }
+            }, 1000)
+        } else if(paused === true){
+            setPaused(false)
+            console.log(paused)
+        } else {
+            setPaused(true)
+            console.log(paused)
+        }
+
     }
-    
+
 
 
     return (
@@ -67,7 +78,8 @@ export const TimerContextProvider = ({children})=>{
                 activityNum,
                 secondsLeft,
                 startTimer, 
-                flash
+                flash,
+                paused
             }}
         >
             {children}
