@@ -54,19 +54,20 @@ const ButtonsList = styled.FlatList`
 `
 
 
-const AnimatedSelectionWindow = ({children}) =>{
-    const slideAnim = useRef(new Animated.Value(-1000)).current;
 
-    useEffect(()=>{
-        Animated.timing(slideAnim, {
-            toValue: 0,
-            duration: 1000,
-            useNativeDriver: true
-        }).start()
-    }, [slideAnim])
 
+
+
+
+export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
+
+
+    console.log(slideOut)
+    
 
     return (
+
+
         <Animated.View style={{
             position: "absolute",
             width: '90%',
@@ -78,33 +79,16 @@ const AnimatedSelectionWindow = ({children}) =>{
                 translateX: slideAnim
             }]
         }}>
-            {children}
-        </Animated.View>
-    )
-}
-
-
-
-
-
-export const AnimatedSelectionModal = ({windowPosition, closeFunction}) => {
-
-    
-
-    return (
-
-
-        <AnimatedSelectionWindow style={{left: windowPosition}} id="">
-            <InnerContainer>
-                <CloseButton onPress={closeFunction}><Text style={{color:'white'}}>X</Text></CloseButton>
-                <ButtonsList
-                contentContainerStyle={{alignItems:'center'}}
-                renderItem={({item})=><ActivityOption thisActivity={item}/>}
-                data={exercises} 
-                numColumns={3}
-                />
-            </InnerContainer>
-        </AnimatedSelectionWindow>
+                <InnerContainer>
+                    <CloseButton onPress={slideOut}><Text style={{color:'white'}}>X</Text></CloseButton>
+                    <ButtonsList
+                    contentContainerStyle={{alignItems:'center'}}
+                    renderItem={({item})=><ActivityOption thisActivity={item}/>}
+                    data={exercises} 
+                    numColumns={3}
+                    />
+                </InnerContainer>
+            </Animated.View>
 
     )
 }

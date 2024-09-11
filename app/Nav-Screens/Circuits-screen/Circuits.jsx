@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { Text, View, Button, StyleSheet, TouchableHighlight, FlatList } from "react-native";
+import { useState, useContext, useRef } from "react";
+import { Text, View, Button, StyleSheet, TouchableHighlight, FlatList, Animated } from "react-native";
 import styled from "styled-components/native";
 
 
@@ -46,12 +46,12 @@ const SetExerciseList = styled.FlatList`
 
 export default function Circuits() {
 
-    const [windowPos, setWindowPos] = useState('-100%')
-
     const context = useContext(CircuitContext)
 
     let circuits = context.circuits;
 
+
+    const slideAnim = useRef(new Animated.Value(-500)).current;
 
     
     function addActivity(){
@@ -60,6 +60,23 @@ export default function Circuits() {
     
     function closeWindow(){
         setWindowPos('-100%')
+    }
+
+    function slideIn(){
+        Animated.timing(slideAnim, {
+            toValue: 0,
+            duration: 400,
+            useNativeDriver: true
+        }).start()
+    }
+
+    function slideOut(){
+        console.log("sliding")
+        Animated.timing(slideAnim, {
+            toValue: -500,
+            duration: 400,
+            useNativeDriver: true
+        }).start()
     }
 
     
@@ -74,15 +91,16 @@ export default function Circuits() {
             backgroundColor: '#4b5975'
           }}
           >
-            <AnimatedSelectionModal closeFunction={closeWindow}/>
+            <AnimatedSelectionModal  slideOut={slideOut} slideAnim={slideAnim}/>
             {/* <SelectionModal windowPosition={windowPos} closeFunction={closeWindow}/> */}
             <Text>This is where you set the circuits</Text>
             <SetExerciseList
+
                 data={circuits} 
                 renderItem={({item})=><ExerciseBar key={circuits.indexOf(item)} index={circuits.indexOf(item)} activity={item} />}
                 contentContainerStyle={{justifyContent: 'center', alignItems:'center'}}
                 />
-            <AddButton onPress={addActivity}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
+            <AddButton onPress={slideIn}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
         </View>
     )
 }
