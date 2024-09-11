@@ -3,6 +3,17 @@ import styled from "styled-components/native";
 import { useContext } from "react";
 import { CircuitContext } from "../context/circuitContextProvidor";
 
+
+
+import {
+    useFonts,
+    Oxygen_300Light,
+    Oxygen_400Regular,
+    Oxygen_700Bold,
+  } from '@expo-google-fonts/oxygen';
+
+
+
 const ActivityContainer = styled.View`
     border: 1px solid white;
     border-radius: 5px;
@@ -22,12 +33,22 @@ const ActivityText = styled.Text`
     justify-content: center;
     text-align: center;
     font-size: 17px;
+    font-family: 'Oxygen_400Regular';
+    color: white;
+
+    
 `
 
 export const ExerciseBar = ({activity, index}) => {
 
     const context = useContext(CircuitContext);
     const deleteFunc = context.deleteExercise;
+
+    let [fontsLoaded] = useFonts({
+        Oxygen_300Light,
+        Oxygen_400Regular,
+        Oxygen_700Bold,
+      });
 
 
     return (

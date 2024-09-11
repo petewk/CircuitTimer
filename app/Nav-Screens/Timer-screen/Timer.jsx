@@ -10,6 +10,13 @@ import { TimerContext } from "./context/timerContext";
 import { CircuitContext } from "../Circuits-screen/context/circuitContextProvidor";
 
 
+import {
+    useFonts,
+    Oxygen_300Light,
+    Oxygen_400Regular,
+    Oxygen_700Bold,
+  } from '@expo-google-fonts/oxygen';
+
 
 
 export default function Timer() {
@@ -26,39 +33,49 @@ export default function Timer() {
     }
 
 
-    
-    return (
-        <View id=""
-        style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: flashColors[flash],
-            paddingTop: 30,
-            paddingBottom: 100,
-          }}>
-            <View style={styles.thisRound}>
-                <Text style={{fontSize: 25, color: 'grey'}}>{roundNum +1}</Text>
-                <Text style={styles.countdown}>{secondsLeft}</Text>
-                <Text style={styles.currentEx}>{circuits[roundNum].exercise}</Text>
-            </View>
-            <TouchableHighlight style={styles.pressStart} onPress={playPause}>
-                <Text style={{textAlign: 'center'}}>
-                    <FontAwesomeIcon icon={faPlay} />
-                </Text>
-            </TouchableHighlight>
-            <View style={styles.nextRound}>
-                <Text style={styles.nextText}>Up next: </Text>
-                {
-                    !circuits[roundNum+1] ? 
-                    <Text style={styles.nextText}>A REST!</Text>
-                    :
-                    <Text style={styles.nextText}>{circuits[roundNum+1].exercise}</Text>
+    let [fontsLoaded] = useFonts({
+        Oxygen_300Light,
+        Oxygen_400Regular,
+        Oxygen_700Bold,
+      });
 
-                }
+      if(!fontsLoaded){
+        return null
+      } else    {
+        return (
+            <View id=""
+            style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: flashColors[flash],
+                paddingTop: 30,
+                paddingBottom: 100,
+                fontFamily: 'Oxygen_700Bold'
+              }}>
+                <View style={styles.thisRound}>
+                    <Text style={{fontSize: 25, color: 'grey'}}>{roundNum +1}</Text>
+                    <Text style={styles.countdown}>{secondsLeft}</Text>
+                    <Text style={styles.currentEx}>{circuits[roundNum].exercise}</Text>
+                </View>
+                <TouchableHighlight style={styles.pressStart} onPress={playPause}>
+                    <Text style={{textAlign: 'center'}}>
+                        <FontAwesomeIcon icon={faPlay} />
+                    </Text>
+                </TouchableHighlight>
+                <View style={styles.nextRound}>
+                    <Text style={styles.nextText}>Up next: </Text>
+                    {
+                        !circuits[roundNum+1] ? 
+                        <Text style={styles.nextText}>A REST!</Text>
+                        :
+                        <Text style={styles.nextText}>{circuits[roundNum+1].exercise}</Text>
+    
+                    }
+                </View>
             </View>
-        </View>
-    )
+        )
+    }
 
 }
 const styles = StyleSheet.create({
@@ -68,18 +85,21 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderWidth: 1,
         borderColor: 'white',
-        width: '100%'
+        width: '100%',
+        fontFamily: 'Oxygen_700Bold'
     },
     currentEx: {
         color: 'grey',
-        fontSize: 50
+        fontSize: 50,
+        fontFamily: 'Oxygen_700Bold'
     },
     pressStart:{
         height: '100px',
         flex: 1,
         width: '80%',
         justifyContent: 'center',
-        backgroundColor: '#ffffff20'
+        backgroundColor: '#ffffff20',
+        fontFamily: 'Oxygen_700Bold'
 
     },
     countdown: {
@@ -93,9 +113,11 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         borderWidth: 1,
         width: '100%',
+        fontFamily: 'Oxygen_700Bold'
     },
     nextText: {
         fontSize: 25,
         color: 'grey',
+        fontFamily: 'Oxygen_700Bold'
     }
 })

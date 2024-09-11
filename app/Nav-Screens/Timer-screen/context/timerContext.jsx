@@ -45,6 +45,7 @@ export const TimerContextProvider = ({children})=>{
             return
         }
         flashScreen(200, 400)
+        Vibration.vibrate(200, 400, 200, 400)
         let nextroundnum = roundNum +1;
         if(circuits[nextroundnum]){
             setRoundNum(nextroundnum);

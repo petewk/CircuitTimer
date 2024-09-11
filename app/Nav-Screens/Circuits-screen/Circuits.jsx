@@ -13,6 +13,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 import { ExerciseBar } from "./components/exercise-bar";
 import { SelectionModal } from "./components/exercises-modal";
 
+import {AnimatedSelectionModal} from "./components/animated-modal";
+
 // Import context
 import { CircuitContext } from "./context/circuitContextProvidor";
 
@@ -72,7 +74,8 @@ export default function Circuits() {
             backgroundColor: '#4b5975'
           }}
           >
-            <SelectionModal windowPosition={windowPos} closeFunction={closeWindow}/>
+            <AnimatedSelectionModal closeFunction={closeWindow}/>
+            {/* <SelectionModal windowPosition={windowPos} closeFunction={closeWindow}/> */}
             <Text>This is where you set the circuits</Text>
             <SetExerciseList
                 data={circuits} 
