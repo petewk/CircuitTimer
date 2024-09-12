@@ -1,5 +1,5 @@
 import { useState, useContext, useRef } from "react";
-import { Text, View, Button, StyleSheet, TouchableHighlight, FlatList, Animated } from "react-native";
+import { Text, View, Button, StyleSheet, TouchableHighlight, FlatList, Animated, Easing } from "react-native";
 import styled from "styled-components/native";
 
 
@@ -53,19 +53,12 @@ export default function Circuits() {
 
     const slideAnim = useRef(new Animated.Value(-500)).current;
 
-    
-    function addActivity(){
-        setWindowPos('5%')
-    }
-    
-    function closeWindow(){
-        setWindowPos('-100%')
-    }
 
     function slideIn(){
         Animated.timing(slideAnim, {
             toValue: 0,
             duration: 400,
+            Easing,
             useNativeDriver: true
         }).start()
     }
@@ -75,6 +68,7 @@ export default function Circuits() {
         Animated.timing(slideAnim, {
             toValue: -500,
             duration: 400,
+            Easing,
             useNativeDriver: true
         }).start()
     }

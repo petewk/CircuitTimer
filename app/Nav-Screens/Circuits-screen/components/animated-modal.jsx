@@ -42,7 +42,7 @@ const CloseButton = styled.TouchableHighlight`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 10px;
     margin: 10px;
     border-radius: 3px;
     border: 1px solid white;
@@ -52,11 +52,6 @@ const ButtonsList = styled.FlatList`
     display: flex;
     margin: 25px auto;
 `
-
-
-
-
-
 
 
 export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
