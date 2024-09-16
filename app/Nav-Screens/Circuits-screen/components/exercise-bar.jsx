@@ -33,7 +33,7 @@ const ActivityText = styled.Text`
     justify-content: center;
     text-align: center;
     font-size: 17px;
-    font-family: 'Oxygen_400Regular';
+    font-family: Oxygen_400Regular;
     color: white;
 
     
@@ -51,13 +51,17 @@ export const ExerciseBar = ({activity, index}) => {
       });
 
 
+      if(!fontsLoaded){
+        return null
+      } else {
     return (
         <ActivityContainer>
             <ActivityText style={{flex:1}}>{index +1}.</ActivityText>
             <ActivityText style={{flex:4}}>{activity.exercise}</ActivityText>
             <ActivityText style={{flex:2}}>{activity.duration}s</ActivityText>
-            <TouchableHighlight style={{flex:1}} onPress={()=>{deleteFunc(index)}}><Text style={{textAlign: 'center'}}>X</Text></TouchableHighlight>
+            <TouchableHighlight style={{flex:1}} onPress={()=>{deleteFunc(index)}}><Text style={{fontSize: 20,color:'black', textAlign: 'center'}}>X</Text></TouchableHighlight>
             
         </ActivityContainer>
     )
+}
 } 

@@ -54,15 +54,26 @@ export default function Timer() {
                 fontFamily: 'Oxygen_700Bold'
               }}>
                 <View style={styles.thisRound}>
-                    <Text style={{fontSize: 25, color: 'grey'}}>{roundNum +1}</Text>
+                    <Text style={{fontSize: 25, color: '#c4cfc0'}}>Exercise {roundNum +1} of {circuits.length}</Text>
                     <Text style={styles.countdown}>{secondsLeft}</Text>
                     <Text style={styles.currentEx}>{circuits[roundNum].exercise}</Text>
                 </View>
-                <TouchableHighlight style={styles.pressStart} onPress={playPause}>
-                    <Text style={{textAlign: 'center'}}>
-                        <FontAwesomeIcon icon={faPlay} />
-                    </Text>
-                </TouchableHighlight>
+
+                        {
+                            paused ?
+                                <TouchableHighlight style={styles.pressPause} onPress={playPause}>
+                                    <Text style={{textAlign: 'center'}}>
+                                        <FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faPlay} />
+                                    </Text>
+                                </TouchableHighlight>
+                            :   
+                                <TouchableHighlight style={styles.pressStart} onPress={playPause}>
+                                    <Text style={{textAlign: 'center'}}>
+                                        <FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faPause} />
+                                    </Text>
+                                </TouchableHighlight>
+                                
+                        }
                 <View style={styles.nextRound}>
                     <Text style={styles.nextText}>Up next: </Text>
                     {
@@ -83,13 +94,11 @@ const styles = StyleSheet.create({
         flex: 4,
         justifyContent: "center",
         alignItems: "center",
-        borderWidth: 1,
-        borderColor: 'white',
         width: '100%',
         fontFamily: 'Oxygen_700Bold'
     },
     currentEx: {
-        color: 'grey',
+        color: '#c4cfc0',
         fontSize: 50,
         fontFamily: 'Oxygen_700Bold'
     },
@@ -99,25 +108,40 @@ const styles = StyleSheet.create({
         width: '80%',
         justifyContent: 'center',
         backgroundColor: '#ffffff20',
-        fontFamily: 'Oxygen_700Bold'
+        fontFamily: 'Oxygen_700Bold',
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: '#ab2626',
+        borderRadius: 10
+
+    },
+    pressPause:{
+        height: '100px',
+        flex: 1,
+        width: '80%',
+        justifyContent: 'center',
+        backgroundColor: '#ffffff20',
+        fontFamily: 'Oxygen_700Bold',
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: '#c4cfc0',
+        borderRadius: 10
 
     },
     countdown: {
         fontSize: 75,
-        color: 'grey'
+        color: '#c4cfc0'
     },
     nextRound: {
         flex: 2,
         justifyContent: "center",
         alignItems: 'center',
-        borderColor: 'white',
-        borderWidth: 1,
         width: '100%',
         fontFamily: 'Oxygen_700Bold'
     },
     nextText: {
         fontSize: 25,
-        color: 'grey',
+        color: '#c4cfc0',
         fontFamily: 'Oxygen_700Bold'
     }
 })

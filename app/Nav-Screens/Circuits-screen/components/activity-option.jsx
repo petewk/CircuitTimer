@@ -7,19 +7,18 @@ import { CircuitContext } from "../context/circuitContextProvidor";
 import { TimeSelectorScroll } from "./scrollSelector";
 
 
-const ActivityContainer = styled.TouchableHighlight`
-    display: inline-flex;
+const ActivityContainer = styled.View`
     width: 100px;
     height: 100px;
     margin: 10px;
-    color: white;
-    flex-direction: row;    
+    color: white;   
     align-items: center;
     overflow: hidden;
 `
 
 const ActivitySection = styled.TouchableHighlight`
     width: 100px;
+    height: 100px;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -37,44 +36,40 @@ export const ActivityOption = ({thisActivity}) => {
 
     
     const {startCircuits, addExercise} = useContext(CircuitContext);
+    const [position, setPosition] = useState(0);
+    const [display, setDisplay] = useState('flex');
 
-    let TimerSlide = useRef(new Animated.Value(-100)).current;
+
 
     const name = thisActivity;
 
-    function slideTimer(){
-        console.log('sliding')
-        Animated.timing(TimerSlide, {
-            toValue: 0,
-            duration: 200,
-            useNativeDriver: true
-        }).start()
 
-        const closing = setTimeout(()=>{
-            Animated.timing(TimerSlide, {
-                toValue: -100,
-                duration: 600,
-                useNativeDriver: true
-            }).start()
-        }, 7500)
 
+    function timerSlide(){
+        if(display === 'flex'){
+            setDisplay('none');
+            setTimeout(()=>{
+                setDisplay('flex')
+            }, 5000)
+        } else {
+            setDisplay('flex')
+        }
     }
-
 
 
     return (
 
         <ActivityContainer >
-            <Animated.View style={{transform:[{translateX: TimerSlide}], flex: 1, flexDirection: 'row', position: 'absolute'}}>
-                <TimeSelectorScroll />
-                <ActivitySection onPress={slideTimer}>
+            <View>
+                <ActivitySection style={{display: display}} onPress={timerSlide}>
                     <>
                         <ActivityImage source={require('./exercise.png')}/>
                         <Text style={{color: 'white'}}>{name}</Text>
                     </>
-                    
                 </ActivitySection>
-            </Animated.View>
+                <TimeSelectorScroll name={name} timerSlide={timerSlide}/>
+
+            </View>
         </ActivityContainer>
     )
 

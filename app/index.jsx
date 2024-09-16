@@ -41,13 +41,14 @@ export default function Index() {
                 tabBarIcon: () => (
                   <FontAwesomeIcon icon={faList} />
                 ),
-                
               }} name="Circuits" component={Circuits}/>
 
               <homeStack.Screen options={{
+                
                 tabBarIcon: () => (
                   <FontAwesomeIcon icon={faStopwatch} />
-                )
+                ),
+                tabBarActiveTintColor: '#4b7553',
               }}
               name="Timer" component={Timer}/>
               

@@ -20,6 +20,14 @@ import { CircuitContext } from "./context/circuitContextProvidor";
 
 
 
+import {
+    useFonts,
+    Oxygen_300Light,
+    Oxygen_400Regular,
+    Oxygen_700Bold,
+  } from '@expo-google-fonts/oxygen';
+
+
 
 const AddButton = styled.TouchableOpacity`
     width: 90%;
@@ -34,7 +42,7 @@ const AddButton = styled.TouchableOpacity`
 `
 
 const SetExerciseList = styled.FlatList`
-    height: 90%;
+    maxHeight: 90%;
     display: flex;
     flex-direction: column;
     padding-top: 25px;
@@ -53,6 +61,12 @@ export default function Circuits() {
 
     const slideAnim = useRef(new Animated.Value(-500)).current;
 
+    let [fontsLoaded] = useFonts({
+        Oxygen_300Light,
+        Oxygen_400Regular,
+        Oxygen_700Bold,
+      });
+
 
     function slideIn(){
         Animated.timing(slideAnim, {
@@ -64,7 +78,6 @@ export default function Circuits() {
     }
 
     function slideOut(){
-        console.log("sliding")
         Animated.timing(slideAnim, {
             toValue: -500,
             duration: 400,
@@ -74,29 +87,31 @@ export default function Circuits() {
     }
 
     
-    
+    if(!fontsLoaded){
+        return null
+      } else {
     return (
         <View
         style={{
             flex: 10,
             paddingTop: 15,
-            justifyContent: "center",
+            justifyContent: "flex-start",
             alignItems: "center",
             backgroundColor: '#4b5975'
           }}
           >
             <AnimatedSelectionModal  slideOut={slideOut} slideAnim={slideAnim}/>
             {/* <SelectionModal windowPosition={windowPos} closeFunction={closeWindow}/> */}
-            <Text>This is where you set the circuits</Text>
+            <Text style={{fontFamily: 'Oxygen_700Bold', fontSize: 20, color:'white'}}>Customise your work out</Text>
             <SetExerciseList
 
                 data={circuits} 
                 renderItem={({item})=><ExerciseBar key={circuits.indexOf(item)} index={circuits.indexOf(item)} activity={item} />}
-                contentContainerStyle={{justifyContent: 'center', alignItems:'center'}}
+                contentContainerStyle={{justifyContent: 'center' ,alignItems:'center'}}
                 />
             <AddButton onPress={slideIn}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
         </View>
-    )
+    ) }
 }
 
 

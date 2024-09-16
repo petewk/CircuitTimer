@@ -29,11 +29,11 @@ export const CircuitContextProvidor = ({children})=>{
     ])
 
 
-    function addExercise(clicked){
+    function addExercise(clicked, duration){
         let holderObj = {
             index: circuits.length,
             exercise: clicked,
-            duration: 40
+            duration: duration
         };
 
         setCircuits([...circuits, holderObj])

@@ -3,7 +3,8 @@ import { Text, View, FlatList, TouchableHighlight, Animated } from "react-native
 import styled from "styled-components/native";
 
 
-
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons/faAngleLeft'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons/faAngleRight'
 
 
 // import exercise list
@@ -11,6 +12,7 @@ import exercises from './exercises'
 
 // import activity option
 import { ActivityOption } from "./activity-option";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 const SelectionWindow = styled.View`
     width: 90%;
@@ -57,7 +59,26 @@ const ButtonsList = styled.FlatList`
 export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
 
 
-    console.log(slideOut)
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(Math.ceil(exercises.length/12))
+
+
+    let itemstoShow = exercises.slice((currentPage -1)*12, currentPage * 12)
+    
+    function pageDown(){
+        holder = currentPage-1;
+        if(currentPage > 1){
+            setCurrentPage(holder)
+        }
+    }
+    
+    function pageUp(){
+        holder = currentPage +1;
+        if(exercises.length > 12*currentPage){
+            setCurrentPage(holder)
+        }
+    }
     
 
     return (
@@ -79,10 +100,17 @@ export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
                     <ButtonsList
                     contentContainerStyle={{alignItems:'center'}}
                     renderItem={({item})=><ActivityOption thisActivity={item}/>}
-                    data={exercises} 
+                    data={itemstoShow} 
                     numColumns={3}
                     />
                 </InnerContainer>
+
+                {/* PAGE NUMS SECTIONS */}
+                <View style={{transform:[{translateY: -50}], flexDirection:'row', alignItems:'center', justifyContent: 'space-between'}}>
+                    <TouchableHighlight onPress={pageDown} style={{display: 'flex', alignItems: 'center'}}><FontAwesomeIcon style={{color: 'white', margin:15}} icon={faAngleLeft}/></TouchableHighlight>
+                    <Text style={{color: 'white', textAlign: 'center'}}>Page {currentPage} of {totalPages}</Text>
+                    <TouchableHighlight onPress={pageUp} style={{display: 'flex', alignItems: 'center'}}><FontAwesomeIcon style={{color: 'white', margin:15}} icon={faAngleRight}/></TouchableHighlight>
+                </View>
             </Animated.View>
 
     )
