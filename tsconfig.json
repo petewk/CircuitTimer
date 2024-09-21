@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/Nav-Screens/Circuits-screen/Circuits.jsx", "app/Nav-Screens/Circuits-screen/context/circuitContextProvidor.jsx", "app/Nav-Screens/Circuits-screen/components/exercises-modal.jsx", "app/Nav-Screens/Circuits-screen/components/exercise-bar.jsx", "app/Nav-Screens/Circuits-screen/components/activity-option.jsx", "app/index.jsx"  ]
+, "app/Nav-Screens/Circuits-screen/Circuits.jsx", "app/Nav-Screens/Circuits-screen/context/circuitContextProvidor.jsx", "app/Nav-Screens/Circuits-screen/components/exercises-modal.jsx", "app/Nav-Screens/Circuits-screen/components/exercise-bar.jsx", "app/Nav-Screens/Circuits-screen/components/activity-option.jsx", "app/index.jsx", "app/Nav-Screens/Settings-screen/Settings.jsx"  ]
 }
