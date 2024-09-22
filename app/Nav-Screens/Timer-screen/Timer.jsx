@@ -4,10 +4,13 @@ import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPause } from '@fortawesome/free-solid-svg-icons/faPause';
 import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
 
 // Contexts
 import { TimerContext } from "./context/timerContext";
 import { CircuitContext } from "../Circuits-screen/context/circuitContextProvidor";
+
 
 
 import {
@@ -21,7 +24,7 @@ import {
 
 export default function Timer() {
 
-    const { flash, secondsLeft, paused, playPause, roundNum} = useContext(TimerContext);
+    const { flash, secondsLeft, paused, playPause, roundNum, autoPlay, setAutoPlay} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
     
 
@@ -84,6 +87,20 @@ export default function Timer() {
     
                     }
                 </View>
+
+                <TouchableHighlight onPress={()=>{setAutoPlay(!autoPlay)}}>
+                    <>
+                        <Text style={{fontSize: 25, color: '#c4cfc0'}}>Pause between rounds?</Text>
+                        <Text>
+                            {
+                                autoPlay ? 
+                                    <Text><FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faCircleXmark} /></Text>
+                                :
+                                    <Text><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleCheck} /></Text>
+                            }
+                        </Text>
+                    </>
+                </TouchableHighlight>
             </View>
         )
     }

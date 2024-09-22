@@ -16,6 +16,21 @@ export const TimerContextProvider = ({children})=>{
     const [roundNum, setRoundNum] = useState(0)
     const [secondsLeft, setSeconds] = useState(circuits[roundNum].duration);
     const [paused, setPaused] = useState(true);
+    const [autoPlay, setAutoPlay] = useState(false)
+
+    const Sound = require('react-native-sound');
+
+    Sound.setCategory('Playback');
+
+
+    const bell = new Sound('bell.mp3', Sound.MAIN_BUNDLE, (error)=>{
+        if(error){
+            console.log(error);
+            return
+        }
+    })
+
+
     
 
     function playPause(){
@@ -37,16 +52,20 @@ export const TimerContextProvider = ({children})=>{
 
     function endEx(){
         setPaused(!paused)
-        setTimeout(()=>{
-            setPaused(false)
-        }, 5000)
+        if(autoPlay){
+            setTimeout(()=>{
+                setPaused(false)
+            }, 5000)
+        }
         if(roundNum +1 > circuits.length){
             console.log("You're done, great job")
             return
         }
         flashScreen(200, 400)
-        Vibration.vibrate(200, 400, 200, 400)
+        Vibration.vibrate([200, 400, 200, 400])
         let nextroundnum = roundNum +1;
+        bell.play()
+
         if(circuits[nextroundnum]){
             setRoundNum(nextroundnum);
             let nextSecs = circuits[nextroundnum].duration;
@@ -77,7 +96,9 @@ export const TimerContextProvider = ({children})=>{
                 secondsLeft,
                 paused,
                 playPause,
-                roundNum
+                roundNum,
+                autoPlay,
+                setAutoPlay
             }}
         >
             {children}
