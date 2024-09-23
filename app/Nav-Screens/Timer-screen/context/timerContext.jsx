@@ -2,6 +2,10 @@ import React, { useState, useContext, createContext, useEffect } from "react";
 import { Vibration } from "react-native";
 
 import { CircuitContext } from "../../Circuits-screen/context/circuitContextProvidor";
+import { SettingsContext } from "../../Settings-screen/settingsContext";
+
+import { Audio } from 'expo-av';
+
 
 
 export const TimerContext = createContext();
@@ -11,24 +15,38 @@ export const TimerContext = createContext();
 
 export const TimerContextProvider = ({children})=>{
     
+    const { theme, sound, bell } = useContext(SettingsContext)
     const { circuits } = useContext(CircuitContext)
+
+
     const [flash, setFlash] = useState(false);
     const [roundNum, setRoundNum] = useState(0)
     const [secondsLeft, setSeconds] = useState(circuits[roundNum].duration);
     const [paused, setPaused] = useState(true);
     const [autoPlay, setAutoPlay] = useState(false)
+    
 
-    const Sound = require('react-native-sound');
+    console.log(bell)
 
-    Sound.setCategory('Playback');
+    async function playSound() {
+        console.log('Loading Sound');
+        const { sound } = await Audio.Sound.createAsync( require('../../../../assets/sounds/bell.mp3' )
+        );
+        setSound(sound);
+    
+        console.log('Playing Sound');
+        await sound.playAsync();
+      }
+    
+      useEffect(() => {
+        return sound
+          ? () => {
+              console.log('Unloading Sound');
+              sound.unloadAsync();
+            }
+          : undefined;
+      }, [sound]);
 
-
-    const bell = new Sound('bell.mp3', Sound.MAIN_BUNDLE, (error)=>{
-        if(error){
-            console.log(error);
-            return
-        }
-    })
 
 
     
@@ -51,6 +69,7 @@ export const TimerContextProvider = ({children})=>{
     }
 
     function endEx(){
+        playSound()
         setPaused(!paused)
         if(autoPlay){
             setTimeout(()=>{
@@ -64,7 +83,6 @@ export const TimerContextProvider = ({children})=>{
         flashScreen(200, 400)
         Vibration.vibrate([200, 400, 200, 400])
         let nextroundnum = roundNum +1;
-        bell.play()
 
         if(circuits[nextroundnum]){
             setRoundNum(nextroundnum);

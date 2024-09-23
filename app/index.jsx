@@ -21,6 +21,9 @@ import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 // import contexts
 import { CircuitContextProvidor } from "./Nav-Screens/Circuits-screen/context/circuitContextProvidor";
 import { TimerContextProvider } from "./Nav-Screens/Timer-screen/context/timerContext";
+import { SettingsContextProvider} from "./Nav-Screens/Settings-screen/settingsContext";
+
+
 
 const homeStack = createMaterialTopTabNavigator()
 
@@ -33,33 +36,35 @@ export default function Index() {
   return (
       <NavigationContainer independent={true}>
         <CircuitContextProvidor>
-          <TimerContextProvider>
-            <homeStack.Navigator 
-              initialRouteName="Circuits"
-              >
-              <homeStack.Screen options={{
-                tabBarIcon: () => (
-                  <FontAwesomeIcon icon={faList} />
-                ),
-              }} name="Circuits" component={Circuits}/>
+          <SettingsContextProvider>
+            <TimerContextProvider>
+              <homeStack.Navigator 
+                initialRouteName="Circuits"
+                >
+                <homeStack.Screen options={{
+                  tabBarIcon: () => (
+                    <FontAwesomeIcon icon={faList} />
+                  ),
+                }} name="Circuits" component={Circuits}/>
 
-              <homeStack.Screen options={{
+                <homeStack.Screen options={{
+                  
+                  tabBarIcon: () => (
+                    <FontAwesomeIcon icon={faStopwatch} />
+                  ),
+                  tabBarActiveTintColor: '#4b7553',
+                }}
+                name="Timer" component={Timer}/>
                 
-                tabBarIcon: () => (
-                  <FontAwesomeIcon icon={faStopwatch} />
-                ),
-                tabBarActiveTintColor: '#4b7553',
-              }}
-              name="Timer" component={Timer}/>
-              
-              <homeStack.Screen options={{
-                tabBarIcon: () => (
-                  <FontAwesomeIcon icon={faGear} />
-                )
-              }}
-              name="Settings" component={Settings}/>
-            </homeStack.Navigator>
-          </TimerContextProvider>
+                <homeStack.Screen options={{
+                  tabBarIcon: () => (
+                    <FontAwesomeIcon icon={faGear} />
+                  )
+                }}
+                name="Settings" component={Settings}/>
+              </homeStack.Navigator>
+            </TimerContextProvider>
+          </SettingsContextProvider>
         </CircuitContextProvidor>
       </NavigationContainer>
   );
