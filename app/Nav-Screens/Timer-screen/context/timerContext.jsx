@@ -6,6 +6,8 @@ import { SettingsContext } from "../../Settings-screen/settingsContext";
 
 import { Audio } from 'expo-av';
 
+import {soundsList} from '../../Settings-screen/soundNames';
+
 
 
 export const TimerContext = createContext();
@@ -15,25 +17,72 @@ export const TimerContext = createContext();
 
 export const TimerContextProvider = ({children})=>{
     
-    const { theme, sound, bell } = useContext(SettingsContext)
+    const { theme, soundName } = useContext(SettingsContext)
     const { circuits } = useContext(CircuitContext)
-
-
+    
+    
     const [flash, setFlash] = useState(false);
     const [roundNum, setRoundNum] = useState(0)
     const [secondsLeft, setSeconds] = useState(circuits[roundNum].duration);
     const [paused, setPaused] = useState(true);
-    const [autoPlay, setAutoPlay] = useState(false)
+    const [autoPlay, setAutoPlay] = useState(false);
     
+    
+    const [sound, setSound] = useState();
+    
+    const sounds = {
+        'bell': require('../../../../assets/sounds/bell.mp3'),
+        'airhorn1': require('../../../../assets/sounds/airhorn1.mp3'),
+        'airhorn2': require('../../../../assets/sounds/airhorn2.mp3'),
+        'buzzer': require('../../../../assets/sounds/buzzer.mp3'),
+        'whistle1': require('../../../../assets/sounds/whistle1.mp3'),
+        'whistle2': require('../../../../assets/sounds/whistle2.mp3'),
+        'whistle3': require('../../../../assets/sounds/whistle3.mp3')
 
-    console.log(bell)
+    }
+  
 
-    async function playSound() {
+
+
+    async function playSound(chosenSound) {
         console.log('Loading Sound');
-        const { sound } = await Audio.Sound.createAsync( require('../../../../assets/sounds/bell.mp3' )
-        );
+        
+        const { sound } = await Audio.Sound.createAsync(chosenSound);
         setSound(sound);
-    
+        
+               
+
+            // case 'airhorn1':
+            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/airhorn1.mp3')
+            //     );
+            //     setSound(sound);
+            //     break;
+            // case 'airhorn2':
+            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/airhorn2.mp3')
+            //     );
+            //     setSound(sound);
+            //     break;
+            // case 'buzzer':
+            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/buzzer.mp3')
+            //     );
+            //     setSound(sound);
+            //     break;
+            // case 'whistle1':
+            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/whistle1.mp3')
+            //     );
+            //     setSound(sound);
+            //     break;
+            // case 'whistle2':
+            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/whistle2.mp3')
+            //     );
+            //     setSound(sound);
+            //     break;
+            // case 'whistle3':
+            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/whistle3.mp3')
+            //     );
+            //     setSound(sound);
+            //     break;
+        // }
         console.log('Playing Sound');
         await sound.playAsync();
       }
@@ -69,7 +118,7 @@ export const TimerContextProvider = ({children})=>{
     }
 
     function endEx(){
-        playSound()
+        playSound(sounds[soundName])
         setPaused(!paused)
         if(autoPlay){
             setTimeout(()=>{
