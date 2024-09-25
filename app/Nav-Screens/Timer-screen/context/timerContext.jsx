@@ -25,7 +25,8 @@ export const TimerContextProvider = ({children})=>{
     const [roundNum, setRoundNum] = useState(0)
     const [secondsLeft, setSeconds] = useState(circuits[roundNum].duration);
     const [paused, setPaused] = useState(true);
-    const [autoPlay, setAutoPlay] = useState(false);
+    const [autoPlay, setAutoPlay] = useState(true);
+    const [finished, setFinished] = useState(false);
     
     
     const [sound, setSound] = useState();
@@ -45,20 +46,15 @@ export const TimerContextProvider = ({children})=>{
 
 
     async function playSound(chosenSound) {
-        console.log('Loading Sound');
         
         const { sound } = await Audio.Sound.createAsync(chosenSound);
         setSound(sound);
-        
-               
-        console.log('Playing Sound');
         await sound.playAsync();
       }
     
       useEffect(() => {
         return sound
           ? () => {
-              console.log('Unloading Sound');
               sound.unloadAsync();
             }
           : undefined;
@@ -86,28 +82,28 @@ export const TimerContextProvider = ({children})=>{
     }
 
     function endEx(){
+        console.log(`round ${roundNum +1} of ${circuits.length} finished` )
         playSound(sounds[soundName])
-        setPaused(!paused)
+        playPause();
+        let nextroundnum = roundNum +1;
+        if(roundNum +1 >= circuits.length){
+            console.log("You're done, great job")
+            playPause();
+            setFinished(true);
+            return
+        }
         if(autoPlay){
             setTimeout(()=>{
                 setPaused(false)
             }, 5000)
         }
-        if(roundNum +1 > circuits.length){
-            console.log("You're done, great job")
-            return
-        }
         flashScreen(200, 400)
         Vibration.vibrate([200, 400, 200, 400])
-        let nextroundnum = roundNum +1;
 
         if(circuits[nextroundnum]){
             setRoundNum(nextroundnum);
             let nextSecs = circuits[nextroundnum].duration;
             setSeconds(nextSecs)
-        } else {
-            setPaused(true)
-            console.log('done')
         }
     }
 
@@ -133,7 +129,8 @@ export const TimerContextProvider = ({children})=>{
                 playPause,
                 roundNum,
                 autoPlay,
-                setAutoPlay
+                setAutoPlay,
+                finished
             }}
         >
             {children}

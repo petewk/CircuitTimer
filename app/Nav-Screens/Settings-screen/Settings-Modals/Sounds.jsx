@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     activeOption: {
         width: '90%',
         borderColor: '#4b7553',
+        backgroundColor: '#2f384a',
         marginTop: 15,
         borderWidth: 2,
         height: 50,

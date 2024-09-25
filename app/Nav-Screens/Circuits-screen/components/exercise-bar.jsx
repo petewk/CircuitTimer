@@ -3,6 +3,8 @@ import styled from "styled-components/native";
 import { useContext } from "react";
 import { CircuitContext } from "../context/circuitContextProvidor";
 
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons/faTrashCan';
+
 
 
 import {
@@ -11,6 +13,7 @@ import {
     Oxygen_400Regular,
     Oxygen_700Bold,
   } from '@expo-google-fonts/oxygen';
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 
 
@@ -59,7 +62,7 @@ export const ExerciseBar = ({activity, index}) => {
             <ActivityText style={{flex:1}}>{index +1}.</ActivityText>
             <ActivityText style={{flex:4}}>{activity.exercise}</ActivityText>
             <ActivityText style={{flex:2}}>{activity.duration}s</ActivityText>
-            <TouchableHighlight style={{flex:1}} onPress={()=>{deleteFunc(index)}}><Text style={{fontSize: 20,color:'black', textAlign: 'center'}}>X</Text></TouchableHighlight>
+            <TouchableHighlight style={{flex:1}} onPress={()=>{deleteFunc(index)}}><Text style={{fontSize: 20,color:'black', textAlign: 'center'}}><FontAwesomeIcon icon={faTrashCan} style={{color: '#c4cfc0'}}/></Text></TouchableHighlight>
             
         </ActivityContainer>
     )

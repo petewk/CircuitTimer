@@ -7,6 +7,7 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
 
+
 // Contexts
 import { TimerContext } from "./context/timerContext";
 import { CircuitContext } from "../Circuits-screen/context/circuitContextProvidor";
@@ -24,7 +25,7 @@ import {
 
 export default function Timer() {
 
-    const { flash, secondsLeft, paused, playPause, roundNum, autoPlay, setAutoPlay} = useContext(TimerContext);
+    const { flash, secondsLeft, paused, playPause, roundNum, autoPlay, setAutoPlay, finished} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
     
 
@@ -58,8 +59,16 @@ export default function Timer() {
               }}>
                 <View style={styles.thisRound}>
                     <Text style={{fontSize: 25, color: '#c4cfc0'}}>Exercise {roundNum +1} of {circuits.length}</Text>
-                    <Text style={styles.countdown}>{secondsLeft}</Text>
-                    <Text style={styles.currentEx}>{circuits[roundNum].exercise}</Text>
+
+                        {
+                            finished ? 
+                            <Text style={[styles.countdown,{textAlign: 'center'}]}>Great workout!</Text>
+                            :
+                            <>
+                                <Text style={styles.countdown}>{secondsLeft}</Text>
+                                <Text style={styles.currentEx}>{circuits[roundNum].exercise}</Text>
+                            </>
+                        }
                 </View>
 
                         {
@@ -88,17 +97,15 @@ export default function Timer() {
                     }
                 </View>
 
-                <TouchableHighlight onPress={()=>{setAutoPlay(!autoPlay)}}>
-                    <>
+                <View>
                         <Text style={{fontSize: 25, color: '#c4cfc0'}}>Pause between rounds?</Text>
                             {
                                 autoPlay ? 
-                                    <Text style={{textAlign: 'center', width: 'inherit', paddingTop: 40}}><FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faCircleXmark} /></Text>
+                                    <TouchableHighlight onPress={()=>{setAutoPlay(!autoPlay)}} style={{textAlign: 'center', width: 'inherit', paddingTop: 20, alignItems:'center'}}><FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faCircleXmark} /></TouchableHighlight>
                                 :
-                                    <Text style={{textAlign: 'center', width: 'inherit', paddingTop: 40}}><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleCheck} /></Text>
+                                    <TouchableHighlight onPress={()=>{setAutoPlay(!autoPlay)}} style={{textAlign: 'center', width: 'inherit', paddingTop: 20, alignItems:'center'}}><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleCheck} /></TouchableHighlight>
                             }
-                    </>
-                </TouchableHighlight>
+                </View>
             </View>
         )
     }
@@ -118,7 +125,9 @@ const styles = StyleSheet.create({
         fontFamily: 'Oxygen_700Bold'
     },
     pressStart:{
-        height: '100px',
+        height: 50,
+
+
         flex: 1,
         width: '80%',
         justifyContent: 'center',
@@ -131,7 +140,7 @@ const styles = StyleSheet.create({
 
     },
     pressPause:{
-        height: '100px',
+        height: 50,
         flex: 1,
         width: '80%',
         justifyContent: 'center',
