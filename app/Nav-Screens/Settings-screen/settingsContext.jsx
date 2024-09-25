@@ -14,7 +14,7 @@ export const SettingsContextProvider = ({children})=>{
     const [soundName, setSoundName] = useState('whistle2')
 
     return (
-        <SettingsContext.Provider value={{ theme, soundName }}>
+        <SettingsContext.Provider value={{ theme, soundName, setSoundName }}>
             {children}
         </SettingsContext.Provider>
     )

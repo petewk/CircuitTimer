@@ -37,7 +37,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 15,
         top: 15,
-    },  
+        borderColor: '#c4cfc0',
+        borderWidth: 2,
+        borderRadius: 5,
+        padding: 5,
+    },   
     title: {
         fontSize: 20
     }

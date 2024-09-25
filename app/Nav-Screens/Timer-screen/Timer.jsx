@@ -91,14 +91,12 @@ export default function Timer() {
                 <TouchableHighlight onPress={()=>{setAutoPlay(!autoPlay)}}>
                     <>
                         <Text style={{fontSize: 25, color: '#c4cfc0'}}>Pause between rounds?</Text>
-                        <Text>
                             {
                                 autoPlay ? 
-                                    <Text><FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faCircleXmark} /></Text>
+                                    <Text style={{textAlign: 'center', width: 'inherit', paddingTop: 40}}><FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faCircleXmark} /></Text>
                                 :
-                                    <Text><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleCheck} /></Text>
+                                    <Text style={{textAlign: 'center', width: 'inherit', paddingTop: 40}}><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleCheck} /></Text>
                             }
-                        </Text>
                     </>
                 </TouchableHighlight>
             </View>

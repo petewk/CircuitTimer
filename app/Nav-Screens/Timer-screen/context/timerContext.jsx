@@ -51,38 +51,6 @@ export const TimerContextProvider = ({children})=>{
         setSound(sound);
         
                
-
-            // case 'airhorn1':
-            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/airhorn1.mp3')
-            //     );
-            //     setSound(sound);
-            //     break;
-            // case 'airhorn2':
-            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/airhorn2.mp3')
-            //     );
-            //     setSound(sound);
-            //     break;
-            // case 'buzzer':
-            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/buzzer.mp3')
-            //     );
-            //     setSound(sound);
-            //     break;
-            // case 'whistle1':
-            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/whistle1.mp3')
-            //     );
-            //     setSound(sound);
-            //     break;
-            // case 'whistle2':
-            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/whistle2.mp3')
-            //     );
-            //     setSound(sound);
-            //     break;
-            // case 'whistle3':
-            //     sound = await Audio.Sound.createAsync( require('../../../../assets/sounds/whistle3.mp3')
-            //     );
-            //     setSound(sound);
-            //     break;
-        // }
         console.log('Playing Sound');
         await sound.playAsync();
       }
