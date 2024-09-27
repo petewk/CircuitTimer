@@ -102,7 +102,7 @@ export default function Circuits() {
           >
             <AnimatedSelectionModal  slideOut={slideOut} slideAnim={slideAnim}/>
             {/* <SelectionModal windowPosition={windowPos} closeFunction={closeWindow}/> */}
-            <Text style={{fontFamily: 'Oxygen_700Bold', fontSize: 20, color:'white'}}>Customise your work out</Text>
+            <Text style={{fontFamily: 'Oxygen_700Bold', fontSize: 20, color:'white'}}>Customise your workout</Text>
             <SetExerciseList
 
                 data={circuits} 

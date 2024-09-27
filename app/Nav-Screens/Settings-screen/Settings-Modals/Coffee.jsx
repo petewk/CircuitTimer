@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { Text, View, FlatList, TouchableHighlight, Animated, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
 
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons/faAngleLeft'
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons/faAngleRight'
 
 
 
@@ -16,7 +16,7 @@ export const AnimatedCoffeesModal = ({animPos, slideOut}) => {
 
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
-               <TouchableHighlight style={styles.close} onPress={()=>{slideOut(animPos)}}><Text style={{fontSize: 20}}>X</Text></TouchableHighlight>
+               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>Coffees Page</Text>
             </Animated.View>
 
@@ -37,9 +37,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 15,
         top: 15,
-        borderColor: '#c4cfc0',
-        borderWidth: 2,
-        borderRadius: 5,
         padding: 5,
     },   
     title: {
