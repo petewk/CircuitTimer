@@ -24,7 +24,7 @@ export const AnimatedSoundsModal = ({animPos, slideOut}) => {
                     {
                         soundOptions.map((sound)=>{
                             return (
-                                <TouchableHighlight style={[sound === soundName ? styles.activeOption : styles.soundOption]} id={sound} onPress={()=>{setSoundName(sound)}}>
+                                <TouchableHighlight style={[sound === soundName ? styles.activeOption : styles.soundOption]} activeOpacity={0.4} underlayColor={'#3f4b63'} onLongPress={()=>{console.log(sound)}} id={sound} onPress={()=>{setSoundName(sound)}}>
                                     <Text style={[sound === soundName ? styles.activeText : styles.normalText]}>{sound.toUpperCase()}</Text>
                                 </TouchableHighlight>
                             )

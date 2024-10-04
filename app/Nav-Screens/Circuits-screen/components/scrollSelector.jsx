@@ -39,7 +39,7 @@ export const TimeSelectorScroll = ({timerSlide, name}) => {
         {
             timeOptions.map((time)=>{
                 return(
-                    <TouchableHighlight onPress={()=>{timeClick(time, name)}} key={timeOptions.indexOf(time)} >
+                    <TouchableHighlight onPress={()=>{timeClick(time, name)}} underlayColor={'#3f6350'} activeOpacity={0.9} key={timeOptions.indexOf(time)} >
                         <Text style={{textAlign: 'center', fontSize:40, color: 'white'}}>{time}</Text>    
                     </TouchableHighlight>
                 )

@@ -61,7 +61,7 @@ export const ActivityOption = ({thisActivity}) => {
 
         <ActivityContainer >
             <View>
-                <ActivitySection style={{display: display}} onPress={timerSlide}>
+                <ActivitySection style={{display: display}} activeOpacity={0.5} underlayColor={'#41464d'} onPress={timerSlide}>
                     <>
                         <ActivityImage source={require('./exercise.png')}/>
                         <Text style={{color: 'white'}}>{name}</Text>

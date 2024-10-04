@@ -44,8 +44,7 @@ const ActivityText = styled.Text`
 
 export const ExerciseBar = ({activity, index}) => {
 
-    const context = useContext(CircuitContext);
-    const deleteFunc = context.deleteExercise;
+    const {circuits, addExercise, deleteExercise} = useContext(CircuitContext);
 
 
     const slideAnim = useRef(new Animated.Value(0)).current;
@@ -67,8 +66,8 @@ export const ExerciseBar = ({activity, index}) => {
 
 
       function removeBar(index){
-        slideBar(-10, 400)
-        deleteFunc(index);
+        // slideBar(-10, 400)
+        deleteExercise(index);
       }
       
 
@@ -80,7 +79,7 @@ export const ExerciseBar = ({activity, index}) => {
             <ActivityText style={{flex:1}}>{index +1}.</ActivityText>
             <ActivityText style={{flex:4}}>{activity.exercise}</ActivityText>
             <ActivityText style={{flex:2}}>{activity.duration}s</ActivityText>
-            <TouchableHighlight style={{flex:1}} onPress={()=>{removeBar(index)}}><Text style={{fontSize: 20,color:'black', textAlign: 'center'}}><FontAwesomeIcon icon={faTrashCan} style={{color: '#c4cfc0'}}/></Text></TouchableHighlight>
+            <TouchableHighlight style={{flex:1, height: '100%', borderRadius: 5, justifyContent: 'center'}} activeOpacity={0.4} underlayColor={'#3f4b63'} onPress={()=>{removeBar(index)}}><Text style={{fontSize: 20,color:'black', textAlign: 'center'}}><FontAwesomeIcon icon={faTrashCan} style={{color: '#c4cfc0'}}/></Text></TouchableHighlight>
         </Animated.View>
     )
 }
