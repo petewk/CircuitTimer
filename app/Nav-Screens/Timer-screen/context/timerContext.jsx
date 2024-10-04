@@ -82,10 +82,11 @@ export const TimerContextProvider = ({children})=>{
     }
 
     function endEx(){
-        console.log(`round ${roundNum +1} of ${circuits.length} finished` )
         playSound(sounds[soundName])
         playPause();
         let nextroundnum = roundNum +1;
+        flashScreen(200, 400)
+        Vibration.vibrate([200, 400, 200, 400])
         if(roundNum +1 >= circuits.length){
             console.log("You're done, great job")
             playPause();
@@ -97,8 +98,6 @@ export const TimerContextProvider = ({children})=>{
                 setPaused(false)
             }, 5000)
         }
-        flashScreen(200, 400)
-        Vibration.vibrate([200, 400, 200, 400])
 
         if(circuits[nextroundnum]){
             setRoundNum(nextroundnum);
@@ -119,6 +118,13 @@ export const TimerContextProvider = ({children})=>{
         }, 500)
     }, [secondsLeft, paused, roundNum])
 
+    function restartCircuit(){
+        console.log('starting again')
+        setRoundNum(0)
+        setSeconds(circuits[roundNum].duration)
+        setFinished(false)
+    }
+
 
     return (
         <TimerContext.Provider
@@ -130,7 +136,8 @@ export const TimerContextProvider = ({children})=>{
                 roundNum,
                 autoPlay,
                 setAutoPlay,
-                finished
+                finished,
+                restartCircuit
             }}
         >
             {children}

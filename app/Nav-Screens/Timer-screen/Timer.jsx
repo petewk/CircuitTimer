@@ -6,6 +6,7 @@ import { faPause } from '@fortawesome/free-solid-svg-icons/faPause';
 import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons/faRotateLeft'
 
 
 // Contexts
@@ -25,7 +26,7 @@ import {
 
 export default function Timer() {
 
-    const { flash, secondsLeft, paused, playPause, roundNum, autoPlay, setAutoPlay, finished} = useContext(TimerContext);
+    const { flash, secondsLeft, paused, playPause, roundNum, autoPlay, setAutoPlay, finished, restartCircuit} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
     
 
@@ -62,7 +63,9 @@ export default function Timer() {
 
                         {
                             finished ? 
-                            <Text style={[styles.countdown,{textAlign: 'center'}]}>Great workout!</Text>
+                            <>
+                                <Text style={[styles.countdown,{textAlign: 'center'}]}>Great workout!</Text>
+                            </>
                             :
                             <>
                                 <Text style={styles.countdown}>{secondsLeft}</Text>
@@ -73,13 +76,13 @@ export default function Timer() {
 
                         {
                             paused ?
-                                <TouchableHighlight style={styles.pressPause} onPress={playPause}>
+                                <TouchableHighlight activeOpacity={0.5} underlayColor={'#ffffff40'} style={styles.pressPause} onPress={playPause}>
                                     <Text style={{textAlign: 'center'}}>
                                         <FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faPlay} />
                                     </Text>
                                 </TouchableHighlight>
                             :   
-                                <TouchableHighlight style={styles.pressStart} onPress={playPause}>
+                                <TouchableHighlight activeOpacity={0.9} underlayColor={'#ffffff40'} style={styles.pressStart} onPress={playPause}>
                                     <Text style={{textAlign: 'center'}}>
                                         <FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faPause} />
                                     </Text>
@@ -90,7 +93,15 @@ export default function Timer() {
                     <Text style={styles.nextText}>Up next: </Text>
                     {
                         !circuits[roundNum+1] ? 
-                        <Text style={styles.nextText}>A REST!</Text>
+                            finished ? 
+                            <TouchableHighlight style={{textAlign: 'center', alignItems:'center'}} onPress={()=>{restartCircuit()}}>
+                                <>
+                                    <Text style={{fontSize: 25, color: '#c4cfc0'}}>Do it again?</Text>
+                                    <FontAwesomeIcon style={{color: '#c4cfc0', marginTop:10, fontSize:'20px'}} size={40} icon={faRotateLeft} />
+                                </>
+                            </TouchableHighlight>
+                            :
+                            <Text style={styles.nextText}>A REST!</Text>
                         :
                         <Text style={styles.nextText}>{circuits[roundNum+1].exercise}</Text>
     
@@ -101,9 +112,9 @@ export default function Timer() {
                         <Text style={{fontSize: 25, color: '#c4cfc0'}}>Pause between rounds?</Text>
                             {
                                 autoPlay ? 
-                                    <TouchableHighlight onPress={()=>{setAutoPlay(!autoPlay)}} style={{textAlign: 'center', width: 'inherit', paddingTop: 20, alignItems:'center'}}><FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faCircleXmark} /></TouchableHighlight>
+                                    <TouchableHighlight activeOpacity={0.9} underlayColor={'#4b7553'} onPress={()=>{setAutoPlay(!autoPlay)}} style={{textAlign: 'center', width: 'inherit', paddingTop: 20, alignItems:'center'}}><FontAwesomeIcon style={{color: '#ab2626', fontSize:'20px'}} size={40} icon={faCircleXmark} /></TouchableHighlight>
                                 :
-                                    <TouchableHighlight onPress={()=>{setAutoPlay(!autoPlay)}} style={{textAlign: 'center', width: 'inherit', paddingTop: 20, alignItems:'center'}}><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleCheck} /></TouchableHighlight>
+                                    <TouchableHighlight activeOpacity={0.9} underlayColor={'#4b7553'} onPress={()=>{setAutoPlay(!autoPlay)}} style={{textAlign: 'center', width: 'inherit', paddingTop: 20, alignItems:'center'}}><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleCheck} /></TouchableHighlight>
                             }
                 </View>
             </View>

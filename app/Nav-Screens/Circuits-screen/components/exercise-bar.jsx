@@ -1,6 +1,6 @@
 import { Text, View, TouchableHighlight, Animated, Easing, StyleSheet } from "react-native";
 import styled from "styled-components/native";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { CircuitContext } from "../context/circuitContextProvidor";
 
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons/faTrashCan';
@@ -65,12 +65,10 @@ export const ExerciseBar = ({activity, index}) => {
         }).start()
       }
 
+
       function removeBar(index){
-        slideBar(-500, 400)
+        slideBar(-10, 400)
         deleteFunc(index);
-        // setTimeout(()=>{
-        //   slideBar(0, 0)
-        // },400)
       }
       
 
@@ -83,7 +81,6 @@ export const ExerciseBar = ({activity, index}) => {
             <ActivityText style={{flex:4}}>{activity.exercise}</ActivityText>
             <ActivityText style={{flex:2}}>{activity.duration}s</ActivityText>
             <TouchableHighlight style={{flex:1}} onPress={()=>{removeBar(index)}}><Text style={{fontSize: 20,color:'black', textAlign: 'center'}}><FontAwesomeIcon icon={faTrashCan} style={{color: '#c4cfc0'}}/></Text></TouchableHighlight>
-            
         </Animated.View>
     )
 }
