@@ -24,10 +24,10 @@ export const AnimatedAboutModal = ({animPos, slideOut}) => {
                <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://reactnative.dev')}}>
                     <Text>Built with React Native</Text>
                </TouchableHighlight>
-               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://google.com')}}>
-                    <Text>Sounds by whatever</Text>
+               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://pixabay.com/')}}>
+                    <Text>Sounds by Pixabay</Text>
                </TouchableHighlight>
-               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://apps.admob.com')}}>
+               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://admob.google.com/home/')}}>
                     <Text>Adverts by Admob - Google</Text>
                </TouchableHighlight>
             </Animated.View>
