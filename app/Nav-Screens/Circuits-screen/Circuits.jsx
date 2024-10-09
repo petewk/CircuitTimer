@@ -11,7 +11,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 
 // import components
 import { ExerciseBar } from "./components/exercise-bar";
-import { SelectionModal } from "./components/exercises-modal";
 
 import {AnimatedSelectionModal} from "./components/animated-modal";
 
@@ -54,12 +53,12 @@ const SetExerciseList = styled.FlatList`
 
 export default function Circuits() {
 
-    const context = useContext(CircuitContext)
+    const  {circuits} = useContext(CircuitContext)
 
-    let circuits = context.circuits;
 
 
     const slideAnim = useRef(new Animated.Value(-500)).current;
+    console.log(circuits.length)
 
     let [fontsLoaded] = useFonts({
         Oxygen_300Light,
@@ -101,14 +100,20 @@ export default function Circuits() {
           }}
           >
             <AnimatedSelectionModal  slideOut={slideOut} slideAnim={slideAnim}/>
-            {/* <SelectionModal windowPosition={windowPos} closeFunction={closeWindow}/> */}
             <Text style={{fontFamily: 'Oxygen_700Bold', fontSize: 20, color:'white'}}>Customise your workout</Text>
-            <SetExerciseList
-
-                data={circuits} 
-                renderItem={({item})=><ExerciseBar key={circuits.indexOf(item)} index={circuits.indexOf(item)} activity={item} />}
-                contentContainerStyle={{justifyContent: 'center' ,alignItems:'center'}}
-                />
+            {
+                circuits.length > 0 ?
+                <SetExerciseList
+    
+                    data={circuits} 
+                    renderItem={({item})=><ExerciseBar key={circuits.indexOf(item)} index={circuits.indexOf(item)} activity={item} />}
+                    contentContainerStyle={{justifyContent: 'center' ,alignItems:'center'}}
+                    />
+                
+                    :
+                    
+                    <Text>Pick some exercises to add to your circuit and get started!</Text>
+            }
             <AddButton onPress={slideIn}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
         </View>
     ) }

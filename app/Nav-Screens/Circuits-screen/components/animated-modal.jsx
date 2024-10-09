@@ -34,6 +34,7 @@ const InnerContainer = styled.View`
     flex-wrap: wrap;
     flex-direction: row;
     padding: 10px;
+    padding-top: 40px;
     overflow-y: scroll;
 `
 
@@ -108,7 +109,7 @@ export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
                 {/* PAGE NUMS SECTIONS */}
                 <View style={{transform:[{translateY: -50}], flexDirection:'row', alignItems:'center', justifyContent: 'space-between'}}>
                     <TouchableHighlight onPress={pageDown} style={{display: 'flex', alignItems: 'center'}}><FontAwesomeIcon style={{color: 'white', margin:15}} icon={faAngleLeft}/></TouchableHighlight>
-                    <Text style={{color: 'white', textAlign: 'center'}}>Page {currentPage} of {totalPages}</Text>
+                    <Text style={{color: 'white', textAlign: 'center'}}>{currentPage} / {totalPages}</Text>
                     <TouchableHighlight onPress={pageUp} style={{display: 'flex', alignItems: 'center'}}><FontAwesomeIcon style={{color: 'white', margin:15}} icon={faAngleRight}/></TouchableHighlight>
                 </View>
             </Animated.View>

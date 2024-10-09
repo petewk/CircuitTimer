@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Text, View, FlatList, TouchableHighlight, Animated, StyleSheet } from "react-native";
+import { Text, View, FlatList, TouchableHighlight, Animated, StyleSheet, Linking } from "react-native";
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
+
+
+
+
 
 
 
@@ -12,12 +16,20 @@ export const AnimatedAboutModal = ({animPos, slideOut}) => {
 
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
-               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleXmark} /></TouchableHighlight>
+               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={'20px'} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>About Page</Text>
-               <Text>Made by Pkcode ltd</Text>
-               <Text>Built with React Native</Text>
-               <Text>Sounds by whatever</Text>
-               <Text>Adverts by something</Text>
+               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://google.com')}}>
+                    <Text>Made by Pkcode ltd</Text>
+               </TouchableHighlight>
+               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://reactnative.dev')}}>
+                    <Text>Built with React Native</Text>
+               </TouchableHighlight>
+               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://google.com')}}>
+                    <Text>Sounds by whatever</Text>
+               </TouchableHighlight>
+               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://apps.admob.com')}}>
+                    <Text>Adverts by Admob - Google</Text>
+               </TouchableHighlight>
             </Animated.View>
 
     )
@@ -31,7 +43,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#4b5975',
         zIndex: 10,
         alignItems: 'center',
-        padding: 30
+        padding: 30,
+        paddingTop: 50
     },
     close: {
         position: 'absolute',
@@ -41,5 +54,15 @@ const styles = StyleSheet.create({
     },   
     title: {
         fontSize: 20
-    }
+    },
+    linkBox:{
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius: 20,
+        width: '95%',
+        height: 95,
+        marginBottom: 20,
+        padding: 10
+
+    }  
 })

@@ -25,7 +25,7 @@ export const TimerContextProvider = ({children})=>{
     const [roundNum, setRoundNum] = useState(0)
     const [secondsLeft, setSeconds] = useState(circuits[roundNum].duration);
     const [paused, setPaused] = useState(true);
-    const [autoPlay, setAutoPlay] = useState(true);
+    const [autoPlay, setAutoPlay] = useState(false);
     const [finished, setFinished] = useState(false);
     
     

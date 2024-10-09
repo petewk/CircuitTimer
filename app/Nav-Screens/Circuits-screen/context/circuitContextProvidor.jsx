@@ -11,20 +11,20 @@ export const CircuitContextProvidor = ({children})=>{
 
     const [circuits, setCircuits] = useState([
         {
-            exercise:'Press-ups',
-            duration: 10
+            exercise: 'Planks',
+            duration: 30
         },
         {
-            exercise:'Sit-ups',
-            duration: 10
+            exercise: 'Shuttle Runs',
+            duration: 30
         },
         {
-            exercise:'Plank',
-            duration: 10
+            exercise: 'Burpees',
+            duration: 30
         },
         {
-            exercise:'Plank',
-            duration: 10
+            exercise: 'Squats',
+            duration: 30
         }
     ])
 
@@ -35,14 +35,29 @@ export const CircuitContextProvidor = ({children})=>{
             exercise: clicked,
             duration: duration
         };
-
-        setCircuits([...circuits, holderObj])
+        
+        if(circuits.length === 1 && circuits[0].exercise === 'Nothing here!'){
+            setCircuits([holderObj])    
+        } else {
+            setCircuits([...circuits, holderObj])
+        }
     }
 
     function deleteExercise(clicked){
-        let holderArray = circuits;
-        holderArray.splice(clicked, 1);
-        setCircuits([...holderArray]);
+        let deleteHolder = {
+            index: circuits.length,
+            exercise: 'Nothing here!',
+            duration: 0
+        }
+        if(circuits.length === 1 && circuits[0].exercise !== 'Nothing here!'){
+            console.log('this?')
+            setCircuits([deleteHolder])
+        } 
+        if(circuits.length > 1){
+            let holderArray = circuits;
+            holderArray.splice(clicked, 1);
+            setCircuits([...holderArray]);
+        }
         
     }
 

@@ -12,8 +12,9 @@ const ActivityContainer = styled.View`
     height: 100px;
     margin: 10px;
     color: white;   
-    align-items: center;
+    padding-top: 0px;
     overflow: hidden;
+    align-items: flex-start;
 `
 
 const ActivitySection = styled.TouchableHighlight`
@@ -61,10 +62,10 @@ export const ActivityOption = ({thisActivity}) => {
 
         <ActivityContainer >
             <View>
-                <ActivitySection style={{display: display}} activeOpacity={0.5} underlayColor={'#41464d'} onPress={timerSlide}>
+                <ActivitySection style={{display: display, justifyContent: 'flex-start', textAlign: 'center'}} activeOpacity={0.5} underlayColor={'#41464d'} onPress={timerSlide}>
                     <>
                         <ActivityImage source={require('./exercise.png')}/>
-                        <Text style={{color: 'white'}}>{name}</Text>
+                        <Text style={{color: 'white', textAlign: 'center'}}>{name}</Text>
                     </>
                 </ActivitySection>
                 <TimeSelectorScroll name={name} timerSlide={timerSlide}/>
