@@ -49,9 +49,9 @@ export const ActivityOption = ({thisActivity}) => {
     function timerSlide(){
         if(display === 'flex'){
             setDisplay('none');
-            setTimeout(()=>{
-                setDisplay('flex')
-            }, 5000)
+            // setTimeout(()=>{
+            //     setDisplay('flex')
+            // }, 5000)
         } else {
             setDisplay('flex')
         }

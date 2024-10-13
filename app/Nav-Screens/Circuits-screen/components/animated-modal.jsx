@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Text, View, FlatList, TouchableHighlight, Animated } from "react-native";
+import { Text, View, FlatList, TouchableHighlight, Animated, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 
 
@@ -12,7 +12,10 @@ import exercises from './exercises'
 
 // import activity option
 import { ActivityOption } from "./activity-option";
+
+
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
 
 const SelectionWindow = styled.View`
     width: 90%;
@@ -97,7 +100,7 @@ export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
             }]
         }}>
                 <InnerContainer>
-                    <CloseButton onPress={slideOut}><Text style={{color:'white'}}>X</Text></CloseButton>
+                <TouchableHighlight style={styles.close}  onPress={()=>{slideOut()}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={'20px'} icon={faCircleXmark} /></TouchableHighlight>
                     <ButtonsList
                     contentContainerStyle={{alignItems:'center'}}
                     renderItem={({item})=><ActivityOption thisActivity={item}/>}
@@ -116,3 +119,13 @@ export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
 
     )
 }
+
+const styles = StyleSheet.create({
+    close: {
+        position: 'absolute',
+        right: 15,
+        top: 15,
+        padding: 5,
+
+    }   
+})

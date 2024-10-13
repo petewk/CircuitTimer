@@ -25,6 +25,8 @@ export const TimeSelectorScroll = ({timerSlide, name}) => {
             width: 100,
             borderColor: 'white',
             borderWidth: 1,
+            borderBottomWidth: 0,
+            borderTopWidth: 0,
             shadowColor: 'white',
             shadowOffset: {
                 width: 5,
@@ -40,7 +42,7 @@ export const TimeSelectorScroll = ({timerSlide, name}) => {
             timeOptions.map((time)=>{
                 return(
                     <TouchableHighlight onPress={()=>{timeClick(time, name)}} underlayColor={'#3f6350'} activeOpacity={0.9} key={timeOptions.indexOf(time)} >
-                        <Text style={{textAlign: 'center', fontSize:40, color: 'white'}}>{time}</Text>    
+                        <Text style={{textAlign: 'center', fontSize:40, color: 'white'}}>{time}s</Text>    
                     </TouchableHighlight>
                 )
             })

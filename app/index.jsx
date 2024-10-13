@@ -1,6 +1,6 @@
-import { Text, View } from "react-native";
+import { Text, View, Image, StyleSheet, Animated, Easing } from "react-native";
 import { Link } from "expo-router";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -31,6 +31,24 @@ const homeStack = createMaterialTopTabNavigator()
 export default function Index() {
 
 
+  const image = require('../assets/images/circuits.png')
+
+
+
+
+  
+  let splashPos = useRef(new Animated.Value(0)).current
+  
+  useEffect(()=>{
+    setTimeout(()=>{
+      Animated.timing(splashPos, {
+        toValue: -2000,
+        duration: 200,
+        Easing,
+        useNativeDriver: true
+    }).start()
+    }, 1500)
+  })
 
 
   return (
@@ -38,45 +56,65 @@ export default function Index() {
         <CircuitContextProvidor>
           <SettingsContextProvider>
             <TimerContextProvider>
-              <homeStack.Navigator 
-                initialRouteName="Circuits"
-                >
-                <homeStack.Screen options={{
-                  tabBarIcon: () => (
-                    <FontAwesomeIcon icon={faList} color="#4b5975"/>
-                  ),
-                  tabBarActiveTintColor: '#4b5975',
-                  tabBarLabelStyle: {
-                    fontWeight: "bold"
-                  }
-                }} name="Circuits" component={Circuits}/>
 
-                <homeStack.Screen options={{
+                  <Animated.View style={[styles.splash, {transform: [{translateX: splashPos}]}]}>
+                    <Image source={image}/>
+                  </Animated.View>
+
+                <homeStack.Navigator 
+                  initialRouteName="Circuits"
+                  >
+                  <homeStack.Screen options={{
+                    tabBarIcon: () => (
+                      <FontAwesomeIcon icon={faList} color="#4b5975"/>
+                    ),
+                    tabBarActiveTintColor: '#4b5975',
+                    tabBarLabelStyle: {
+                      fontWeight: "bold"
+                    }
+                  }} name="Circuits" component={Circuits}/>
+
+                  <homeStack.Screen options={{
+                    
+                    tabBarIcon: () => (
+                      <FontAwesomeIcon icon={faStopwatch} color="#4b7553"/>
+                    ),
+                    tabBarActiveTintColor: '#4b7553',
+                    tabBarLabelStyle: {
+                      fontWeight: "bold"
+                    }
+                  }}
+                  name="Timer" component={Timer}/>
                   
-                  tabBarIcon: () => (
-                    <FontAwesomeIcon icon={faStopwatch} color="#4b7553"/>
-                  ),
-                  tabBarActiveTintColor: '#4b7553',
-                  tabBarLabelStyle: {
-                    fontWeight: "bold"
-                  }
-                }}
-                name="Timer" component={Timer}/>
-                
-                <homeStack.Screen options={{
-                  tabBarIcon: () => (
-                    <FontAwesomeIcon icon={faGear} color="#75744b"/>
-                  ),
-                  tabBarActiveTintColor: '#75744b',
-                  tabBarLabelStyle: {
-                    fontWeight: "bold"
-                  }
-                }}
-                name="Settings" component={Settings}/>
-              </homeStack.Navigator>
+                  <homeStack.Screen options={{
+                    tabBarIcon: () => (
+                      <FontAwesomeIcon icon={faGear} color="#75744b"/>
+                    ),
+                    tabBarActiveTintColor: '#75744b',
+                    tabBarLabelStyle: {
+                      fontWeight: "bold"
+                    }
+                  }}
+                  name="Settings" component={Settings}/>
+                </homeStack.Navigator>
             </TimerContextProvider>
           </SettingsContextProvider>
         </CircuitContextProvidor>
       </NavigationContainer>
   );
 }
+
+
+const styles = StyleSheet.create({
+  splash: {
+    width: '100%',
+    height: '111%',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#202124',
+    position: 'absolute',
+    zIndex: 10,
+    top: 0
+  }
+})

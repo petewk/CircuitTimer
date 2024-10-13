@@ -17,10 +17,10 @@ export const AnimatedAboutModal = ({animPos, slideOut}) => {
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
                <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={'20px'} icon={faCircleXmark} /></TouchableHighlight>
-               <Text style={styles.title}>About Page</Text>
-               <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://google.com')}}>
+               <Text style={styles.title}>About Circuits</Text>
+               {/* <TouchableHighlight style={styles.linkBox} onPress={()=>{console.log('needs hooking up')}}>
                     <Text>Made by Pkcode ltd</Text>
-               </TouchableHighlight>
+               </TouchableHighlight> */}
                <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://reactnative.dev')}}>
                     <Text>Built with React Native</Text>
                </TouchableHighlight>
@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
         zIndex: 10,
         alignItems: 'center',
         padding: 30,
-        paddingTop: 50
+        paddingTop: 50,
+        justifyContent: 'space-evenly'
     },
     close: {
         position: 'absolute',
