@@ -19,16 +19,16 @@ export const AnimatedAboutModal = ({animPos, slideOut}) => {
                <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={'20px'} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>About Circuits</Text>
                {/* <TouchableHighlight style={styles.linkBox} onPress={()=>{console.log('needs hooking up')}}>
-                    <Text>Made by Pkcode ltd</Text>
+                    <Text style={styles.linkText}>Made by Pkcode ltd</Text>
                </TouchableHighlight> */}
                <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://reactnative.dev')}}>
-                    <Text>Built with React Native</Text>
+                    <Text style={styles.linkText}>Built with React Native</Text>
                </TouchableHighlight>
                <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://pixabay.com/')}}>
-                    <Text>Sounds by Pixabay</Text>
+                    <Text style={styles.linkText}>Sounds by Pixabay</Text>
                </TouchableHighlight>
                <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://admob.google.com/home/')}}>
-                    <Text>Adverts by Admob - Google</Text>
+                    <Text style={styles.linkText}>Adverts by Admob - Google</Text>
                </TouchableHighlight>
             </Animated.View>
 
@@ -63,7 +63,12 @@ const styles = StyleSheet.create({
         width: '95%',
         height: 95,
         marginBottom: 20,
-        padding: 10
+        padding: 10,
+        justifyContent: 'center',
+        alignContent: 'center'
 
+    },
+    linkText: {
+        textAlign: 'center',
     }  
 })
