@@ -31,7 +31,7 @@ export default function Timer({ navigation }) {
 
     const { flash, secondsLeft, paused, playPause, roundNum, autoPlay, setAutoPlay, finished, restartCircuit} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
-    const { theme, soundName, setSoundName, slideIn, slideOut, soundsPos, aboutPos, coffeePos, feedbackPos } = useContext(SettingsContext);
+    const {  slideIn, soundsPos } = useContext(SettingsContext);
     
 
     function toSounds(){

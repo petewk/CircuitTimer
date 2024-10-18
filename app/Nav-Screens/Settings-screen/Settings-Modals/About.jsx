@@ -25,13 +25,13 @@ export const AnimatedAboutModal = ({animPos, slideOut}) => {
                </TouchableHighlight> */}
                <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://reactnative.dev')}}>
                 <>
-                    <Image style={styles.linkImg} source={pixabayLogo}/>
+                    <Image style={styles.linkImg} source={RNLogo}/>
                     <Text style={styles.linkText}>Built with React Native</Text>
                 </>
                </TouchableHighlight>
                <TouchableHighlight style={styles.linkBox} onPress={()=>{Linking.openURL('https://pixabay.com/')}}>
                     <>
-                        <Image style={styles.linkImg} source={RNLogo}/>
+                        <Image style={styles.linkImg} source={pixabayLogo}/>
                         <Text style={styles.linkText}>Sounds by Pixabay</Text>
                     </>
                </TouchableHighlight>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         padding: 5,
     },   
     title: {
-        fontSize: 25,
+        fontSize: 22,
         fontWeight: '700',
         color: 'white',
     },

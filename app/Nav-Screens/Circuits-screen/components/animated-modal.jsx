@@ -83,7 +83,27 @@ export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
             setCurrentPage(holder)
         }
     }
+
     
+    // const icons = ["default", "highknees", "jumprope", "kettlebellswings", "lunges", "planks", "pressups", "situps"]
+    // const routes = ["./activityIcons/exercise.png", "./activityIcons/highknees.png", "./activityIcons/jumprope.png", "./activityIcons/kettlebellswings.png", 
+    //     "./activityIcons/lunges.png", "./activityIcons/planks.png", "./activityIcons/pressups.png", "./activityIcons/situps.png"]
+
+        const routes = {
+            default: require('./activityIcons/exercise.png'),
+            highknees: require('./activityIcons/highknees.png'),
+            jumprope: require('./activityIcons/jumprope.png'),
+            kettlebellswings: require('./activityIcons/kettlebellswings.png'),
+            lunges: require('./activityIcons/lunges.png'),
+            planks: require('./activityIcons/planks.png'),
+            pressups: require('./activityIcons/pressups.png'),
+            situps: require('./activityIcons/situps.png'),
+            pullups: require('./activityIcons/pullups.png'),
+            stairruns: require('./activityIcons/stairruns.png'),
+            shuttleruns: require('./activityIcons/shuttleruns.png'),
+            squats: require('./activityIcons/squats.png'),
+        }
+
 
     return (
 
@@ -103,7 +123,7 @@ export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
                 <TouchableHighlight style={styles.close}  onPress={()=>{slideOut()}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                     <ButtonsList
                     contentContainerStyle={{alignItems:'center'}}
-                    renderItem={({item})=><ActivityOption thisActivity={item}/>}
+                    renderItem={({item})=><ActivityOption route={routes[item.replace(/\s+/g, '').toLowerCase()]} thisActivity={item}/>}
                     data={itemstoShow} 
                     numColumns={3}
                     />

@@ -39,7 +39,7 @@ export const AnimatedSoundsModal = ({animPos, slideOut}) => {
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
                <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
-               <Text style={styles.title}>Pick your End of Exercise alert sound</Text>
+               <Text style={styles.title}>Pick your signal to switch exercise</Text>
                <Text style={styles.title}>Press and hold to sample</Text>
                <View style={styles.soundOptionsBox}>  
                     {

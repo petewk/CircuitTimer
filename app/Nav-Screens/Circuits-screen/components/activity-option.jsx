@@ -33,7 +33,7 @@ const ActivityImage = styled.Image`
 `
 
 
-export const ActivityOption = ({thisActivity}) => {
+export const ActivityOption = ({route, thisActivity}) => {
 
     
     const {startCircuits, addExercise} = useContext(CircuitContext);
@@ -41,8 +41,10 @@ export const ActivityOption = ({thisActivity}) => {
     const [display, setDisplay] = useState('flex');
 
 
+    const icons = ["default", "highknees", "jumprope", "kettlebellswings", "lunges", "planks", "pressups", "situps"]
+    const routes = ["./activityIcons/exercise.png", "./activityIcons/highknees.png", "./activityIcons/jumprope.png", "./activityIcons/kettlebellswings.png", 
+        "./activityIcons/lunges.png", "./activityIcons/planks.png", "./activityIcons/pressups.png", "./activityIcons/situps.png"]
 
-    const name = thisActivity;
 
 
 
@@ -64,11 +66,17 @@ export const ActivityOption = ({thisActivity}) => {
             <View>
                 <ActivitySection style={{display: display, justifyContent: 'flex-start', textAlign: 'center'}} activeOpacity={0.5} underlayColor={'#41464d'} onPress={timerSlide}>
                     <>
-                        <ActivityImage source={require('./exercise.png')}/>
-                        <Text style={{color: 'white', textAlign: 'center'}}>{name}</Text>
+                        {
+                            route === undefined ?
+                            <ActivityImage resizeMode={'stretch'} source={require('./activityIcons/exercise.png')}/>
+                            
+                            :
+                            <ActivityImage resizeMode={'stretch'} source={route}/>
+                        }
+                        <Text style={{color: 'white', textAlign: 'center'}}>{thisActivity}</Text>
                     </>
                 </ActivitySection>
-                <TimeSelectorScroll name={name} timerSlide={timerSlide}/>
+                <TimeSelectorScroll name={thisActivity} timerSlide={timerSlide}/>
 
             </View>
         </ActivityContainer>

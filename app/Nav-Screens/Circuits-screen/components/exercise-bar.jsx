@@ -2,6 +2,8 @@ import { Text, View, TouchableHighlight, Animated, Easing, StyleSheet } from "re
 import styled from "styled-components/native";
 import { useContext, useRef, useEffect } from "react";
 import { CircuitContext } from "../context/circuitContextProvidor";
+import { TimerContext } from "../../Timer-screen/context/timerContext";
+
 
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons/faTrashCan';
 
@@ -45,6 +47,7 @@ const ActivityText = styled.Text`
 export const ExerciseBar = ({activity, index}) => {
 
     const {circuits, addExercise, deleteExercise} = useContext(CircuitContext);
+    const {roundNum, paused} = useContext(TimerContext)
 
 
     const slideAnim = useRef(new Animated.Value(0)).current;
@@ -65,9 +68,9 @@ export const ExerciseBar = ({activity, index}) => {
       }
 
 
-      function removeBar(index){
+      function removeBar(index, roundNum, paused){
         // slideBar(-10, 400)
-        deleteExercise(index);
+        deleteExercise(index, roundNum, paused);
       }
       
 
@@ -79,7 +82,7 @@ export const ExerciseBar = ({activity, index}) => {
             <ActivityText style={{flex:1}}>{index +1}.</ActivityText>
             <ActivityText style={{flex:4}}>{activity.exercise}</ActivityText>
             <ActivityText style={{flex:2}}>{activity.duration}s</ActivityText>
-            <TouchableHighlight style={{flex:1, height: '100%', borderRadius: 5, justifyContent: 'center'}} activeOpacity={0.4} underlayColor={'#3f4b63'} onPress={()=>{removeBar(index)}}><Text style={{fontSize: 20,color:'black', textAlign: 'center'}}><FontAwesomeIcon icon={faTrashCan} style={{color: '#c4cfc0'}}/></Text></TouchableHighlight>
+            <TouchableHighlight style={{flex:1, height: '100%', borderRadius: 5, justifyContent: 'center'}} activeOpacity={0.4} underlayColor={'#3f4b63'} onPress={()=>{removeBar(index, roundNum, paused)}}><Text style={{fontSize: 20,color:'black', textAlign: 'center'}}><FontAwesomeIcon icon={faTrashCan} style={{color: '#c4cfc0'}}/></Text></TouchableHighlight>
         </Animated.View>
     )
 }

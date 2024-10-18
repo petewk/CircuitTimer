@@ -43,7 +43,7 @@ export const CircuitContextProvidor = ({children})=>{
         }
     }
 
-    function deleteExercise(clicked){
+    function deleteExercise(clicked, currentRound, paused){
         let deleteHolder = {
             index: circuits.length,
             exercise: 'Nothing here!',
@@ -54,6 +54,9 @@ export const CircuitContextProvidor = ({children})=>{
             setCircuits([deleteHolder])
         } 
         if(circuits.length > 1){
+            if(clicked <= currentRound && currentRound != 0 && !paused){
+                return
+            }
             let holderArray = circuits;
             holderArray.splice(clicked, 1);
             setCircuits([...holderArray]);

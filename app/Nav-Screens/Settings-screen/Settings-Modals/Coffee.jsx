@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 30,
         paddingTop: 50,
+        justifyContent: 'space-around',
     },
     close: {
         position: 'absolute',
@@ -49,9 +50,9 @@ const styles = StyleSheet.create({
         padding: 5,
     },   
     title: {
-        fontSize: 20,
+        fontSize: 22,
         color: 'white',
-        fontWeight: '600',
+        fontWeight: '700',
     },
     textBody: {
         textAlign: 'center',
