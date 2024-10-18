@@ -20,7 +20,7 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
 const SelectionWindow = styled.View`
     width: 90%;
     height: 90%;
-    background-color: #1c1e21;
+    background-color: '#1c1e21';
     border: 1px solid white;
     position: absolute;
     z-index: 10;
@@ -100,7 +100,7 @@ export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
             }]
         }}>
                 <InnerContainer>
-                <TouchableHighlight style={styles.close}  onPress={()=>{slideOut()}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={'20px'} icon={faCircleXmark} /></TouchableHighlight>
+                <TouchableHighlight style={styles.close}  onPress={()=>{slideOut()}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                     <ButtonsList
                     contentContainerStyle={{alignItems:'center'}}
                     renderItem={({item})=><ActivityOption thisActivity={item}/>}

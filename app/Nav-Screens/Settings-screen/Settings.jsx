@@ -2,6 +2,9 @@ import { useState, useContext, useRef } from "react";
 import { Text, View, TouchableHighlight, Animated, Easing, Image} from "react-native";
 import styled from "styled-components/native";
 
+
+import { SettingsContext } from "./settingsContext";
+
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import { faMusic } from '@fortawesome/free-solid-svg-icons/faMusic';
@@ -49,59 +52,7 @@ const ButtonText = styled.Text`
 
 export default function Settings() {
 
-    const soundsPos = useRef(new Animated.Value(500)).current;
-    const aboutPos = useRef(new Animated.Value(500)).current;
-    const coffeePos = useRef(new Animated.Value(500)).current;
-    const feedbackPos = useRef(new Animated.Value(500)).current;
-
-
-    function slideOut(target){
-        console.log(target)
-        Animated.timing(target, {
-            toValue: 500,
-            duration: 400,
-            Easing,
-            useNativeDriver: true
-        }).start()
-    }
-
-
-    function slideIn(target){
-        Animated.timing(soundsPos, {
-            toValue: 500,
-            duration: 400,
-            Easing,
-            useNativeDriver: true
-        }).start();
-        Animated.timing(aboutPos, {
-            toValue: 500,
-            duration: 400,
-            Easing,
-            useNativeDriver: true
-        }).start();
-        Animated.timing(coffeePos, {
-            toValue: 500,
-            duration: 400,
-            Easing,
-            useNativeDriver: true
-        }).start();
-        Animated.timing(feedbackPos, {
-            toValue: 500,
-            duration: 400,
-            Easing,
-            useNativeDriver: true
-        }).start();
-        Animated.timing(target, {
-            toValue: 0,
-            duration: 400,
-            Easing,
-            useNativeDriver: true
-        }).start()
-        
-    }
-
-
-    
+    const { theme, soundName, setSoundName, slideIn, slideOut, soundsPos, aboutPos, coffeePos, feedbackPos } = useContext(SettingsContext);
 
 
     return (

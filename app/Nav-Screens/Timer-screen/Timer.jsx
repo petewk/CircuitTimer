@@ -1,17 +1,20 @@
 import { useContext, useState, useEffect } from "react";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPause } from '@fortawesome/free-solid-svg-icons/faPause';
 import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
-import { faRotateLeft } from '@fortawesome/free-solid-svg-icons/faRotateLeft'
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons/faRotateLeft';
+import { faMusic } from '@fortawesome/free-solid-svg-icons/faMusic';
 
 
 // Contexts
 import { TimerContext } from "./context/timerContext";
 import { CircuitContext } from "../Circuits-screen/context/circuitContextProvidor";
+import { SettingsContext } from "../Settings-screen/settingsContext";
 
 
 
@@ -24,12 +27,17 @@ import {
 
 
 
-export default function Timer() {
+export default function Timer({ navigation }) {
 
     const { flash, secondsLeft, paused, playPause, roundNum, autoPlay, setAutoPlay, finished, restartCircuit} = useContext(TimerContext);
     const {circuits} = useContext(CircuitContext);
+    const { theme, soundName, setSoundName, slideIn, slideOut, soundsPos, aboutPos, coffeePos, feedbackPos } = useContext(SettingsContext);
     
 
+    function toSounds(){
+        navigation.navigate('Settings');
+        slideIn(soundsPos)
+    }
 
 
     const flashColors = {
@@ -58,6 +66,7 @@ export default function Timer() {
                 paddingBottom: 100,
                 fontFamily: 'Oxygen_700Bold'
               }}>
+                <TouchableHighlight style={styles.toSounds}  onPress={toSounds}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faMusic} /></TouchableHighlight>
                 <View style={styles.thisRound}>
                     <Text style={{fontSize: 25, color: '#c4cfc0'}}>Exercise {roundNum +1} of {circuits.length}</Text>
 
@@ -178,5 +187,11 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color: '#c4cfc0',
         fontFamily: 'Oxygen_700Bold'
-    }
+    },
+    toSounds: {
+        position: 'absolute',
+        right: 15,
+        top: 15,
+        padding: 5,
+    },  
 })

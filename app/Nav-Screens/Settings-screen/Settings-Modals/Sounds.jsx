@@ -38,14 +38,14 @@ export const AnimatedSoundsModal = ({animPos, slideOut}) => {
 
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
-               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={'20px'} icon={faCircleXmark} /></TouchableHighlight>
+               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>Pick your End of Exercise alert sound</Text>
                <Text style={styles.title}>Press and hold to sample</Text>
                <View style={styles.soundOptionsBox}>  
                     {
                         soundOptions.map((sound)=>{
                             return (
-                                <TouchableHighlight style={[sound === soundName ? styles.activeOption : styles.soundOption]} activeOpacity={0.4} underlayColor={'#3f4b63'} onLongPress={()=>{playSound(sound)}} id={sound} onPress={()=>{setSoundName(sound)}}>
+                                <TouchableHighlight style={[sound === soundName ? styles.activeOption : styles.soundOption]} activeOpacity={0.4} underlayColor={'#3f4b63'} onLongPress={()=>{playSound(sound)}} key={sound} onPress={()=>{setSoundName(sound)}}>
                                     <Text id={sound} style={[sound === soundName ? styles.activeText : styles.normalText]}>{sound.toUpperCase()}</Text>
                                 </TouchableHighlight>
                             )

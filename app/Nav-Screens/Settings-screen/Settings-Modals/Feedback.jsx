@@ -12,7 +12,7 @@ export const AnimatedFeedbackModal = ({animPos, slideOut}) => {
 
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
-               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={'20px'} icon={faCircleXmark} /></TouchableHighlight>
+               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>Feedback Page</Text>
                <Text style={styles.textBody}>I'd always be happy to hear if there's a feature that will help make this app more useful for people!</Text>
                <Text style={styles.textBody}>Press the button below to drop us an email if there's something you think would improve this app.</Text>
