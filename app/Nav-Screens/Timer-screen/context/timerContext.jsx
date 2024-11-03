@@ -115,7 +115,7 @@ export const TimerContextProvider = ({children})=>{
                     endEx()
                 }
             }
-        }, 1000)
+        }, 500)
     }, [secondsLeft, paused, roundNum])
 
     function restartCircuit(){
@@ -134,6 +134,7 @@ export const TimerContextProvider = ({children})=>{
                 paused,
                 playPause,
                 roundNum,
+                setRoundNum,
                 autoPlay,
                 setAutoPlay,
                 finished,

@@ -73,7 +73,7 @@ export const ActivityOption = ({route, thisActivity}) => {
                             :
                             <ActivityImage resizeMode={'stretch'} source={route}/>
                         }
-                        <Text style={{color: 'white', textAlign: 'center'}}>{thisActivity}</Text>
+                        <Text style={{color: 'white', textAlign: 'center', marginTop: 5}}>{thisActivity}</Text>
                     </>
                 </ActivitySection>
                 <TimeSelectorScroll name={thisActivity} timerSlide={timerSlide}/>

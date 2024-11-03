@@ -38,7 +38,7 @@ export const AnimatedSoundsModal = ({animPos, slideOut}) => {
 
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
-               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
+               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}} activeOpacity={0.4} underlayColor={'#3f4b63'}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>Pick your signal to switch exercise</Text>
                <Text style={styles.title}>Press and hold to sample</Text>
                <View style={styles.soundOptionsBox}>  
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 15,
         top: 15,
+        borderRadius: 50,
     },  
     title: {
         fontSize: 20,
@@ -83,6 +84,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-evenly',
         marginTop: 30,
+        overflow: 'scroll',
     },
     soundOption: {
         width: '90%',

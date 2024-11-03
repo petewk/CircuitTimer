@@ -16,7 +16,7 @@ export const AnimatedCoffeesModal = ({animPos, slideOut}) => {
 
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
-               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
+               <TouchableHighlight activeOpacity={0.4} underlayColor={'#3f4b63'} style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>Buy me a coffee!</Text>
                <View style={{justifyContent: 'space-evenly', height: '90%', width: '100%', textAlign: 'center'}}>
                 <Text style={styles.textBody}>If you've used my app and found it useful, and would like to buy me a flat white to show your appreciation, it's always welcome!</Text>
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
         right: 15,
         top: 15,
         padding: 5,
+        borderRadius: 50,
     },   
     title: {
         fontSize: 22,

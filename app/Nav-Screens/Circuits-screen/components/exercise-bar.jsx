@@ -47,7 +47,7 @@ const ActivityText = styled.Text`
 export const ExerciseBar = ({activity, index}) => {
 
     const {circuits, addExercise, deleteExercise} = useContext(CircuitContext);
-    const {roundNum, paused} = useContext(TimerContext)
+    const {roundNum, paused, setRoundNum} = useContext(TimerContext)
 
 
     const slideAnim = useRef(new Animated.Value(0)).current;
@@ -70,7 +70,12 @@ export const ExerciseBar = ({activity, index}) => {
 
       function removeBar(index, roundNum, paused){
         // slideBar(-10, 400)
-        deleteExercise(index, roundNum, paused);
+        if(roundNum === circuits.length -1 && circuits.length > 1){
+          setRoundNum(circuits.length -2)
+          deleteExercise(index, roundNum, paused);
+        } else {
+          deleteExercise(index, roundNum, paused);
+        }
       }
       
 

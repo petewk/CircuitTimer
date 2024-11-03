@@ -117,7 +117,10 @@ export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
             zIndex: 10,
             transform: [{
                 translateX: slideAnim
-            }]
+            }],
+            borderColor: 'white',
+            borderWidth: 2,
+            borderRadius: 5,
         }}>
                 <InnerContainer>
                 <TouchableHighlight style={styles.close}  onPress={()=>{slideOut()}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>

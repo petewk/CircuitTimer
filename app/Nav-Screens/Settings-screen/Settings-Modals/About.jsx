@@ -18,7 +18,7 @@ export const AnimatedAboutModal = ({animPos, slideOut}) => {
 
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
-               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
+               <TouchableHighlight activeOpacity={0.4} underlayColor={'#3f4b63'} style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>About Circuits</Text>
                {/* <TouchableHighlight style={styles.linkBox} onPress={()=>{console.log('needs hooking up')}}>
                     <Text style={styles.linkText}>Made by Pkcode ltd</Text>
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
         right: 15,
         top: 15,
         padding: 5,
+        borderRadius: 50,
     },   
     title: {
         fontSize: 22,
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
         right: 'auto',
         opacity: 0.2,
         alignSelf: 'center',
-        width: 90,
-        height: 90,
+        width: 75,
+        height: 75,
     }
 })

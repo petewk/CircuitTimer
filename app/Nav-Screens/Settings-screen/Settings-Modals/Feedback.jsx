@@ -12,7 +12,7 @@ export const AnimatedFeedbackModal = ({animPos, slideOut}) => {
 
 
         <Animated.View style={[styles.container, {transform: [{translateX: animPos}]}]}>
-               <TouchableHighlight style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
+               <TouchableHighlight  activeOpacity={0.4} underlayColor={'#3f4b63'} style={styles.close}  onPress={()=>{slideOut(animPos)}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                <Text style={styles.title}>Let me know what you think!</Text>
                <Text style={styles.textBody}>I'd always be happy to hear if there's a feature that will help make this app more useful for people!</Text>
                <Text style={styles.textBody}>Press the button below to drop us an email if there's something you think would improve this app.</Text>
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
         right: 15,
         top: 15,
         padding: 5,
+        borderRadius: 50,
     },   
     title: {
         fontSize: 22,

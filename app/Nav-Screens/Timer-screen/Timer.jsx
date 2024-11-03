@@ -66,7 +66,7 @@ export default function Timer({ navigation }) {
                 paddingBottom: 100,
                 fontFamily: 'Oxygen_700Bold'
               }}>
-                <TouchableHighlight style={styles.toSounds}  onPress={toSounds}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faMusic} /></TouchableHighlight>
+                <TouchableHighlight style={styles.toSounds} activeOpacity={0.4} underlayColor={'#61916b'}  onPress={toSounds}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faMusic} /></TouchableHighlight>
                 <View style={styles.thisRound}>
                     <Text style={{fontSize: 25, color: '#c4cfc0'}}>Exercise {roundNum +1} of {circuits.length}</Text>
 
@@ -146,8 +146,6 @@ const styles = StyleSheet.create({
     },
     pressStart:{
         height: 50,
-
-
         flex: 1,
         width: '80%',
         justifyContent: 'center',
@@ -193,5 +191,6 @@ const styles = StyleSheet.create({
         right: 15,
         top: 15,
         padding: 5,
+        borderRadius: 50,
     },  
 })
