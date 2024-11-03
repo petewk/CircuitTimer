@@ -107,7 +107,7 @@ export default function Circuits() {
     
                     data={circuits} 
                     renderItem={({item})=><ExerciseBar key={circuits.indexOf(item)} index={circuits.indexOf(item)} activity={item} />}
-                    contentContainerStyle={{justifyContent: 'center' ,alignItems:'center'}}
+                    contentContainerStyle={{justifyContent: 'center' ,alignItems:'center', paddingBottom: 50}}
                     />
                 
                     :
