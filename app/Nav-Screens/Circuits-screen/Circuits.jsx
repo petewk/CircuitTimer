@@ -55,8 +55,6 @@ export default function Circuits() {
 
     const  {circuits} = useContext(CircuitContext)
 
-
-
     const slideAnim = useRef(new Animated.Value(-500)).current;
     console.log(circuits.length)
 
@@ -65,7 +63,6 @@ export default function Circuits() {
         Oxygen_400Regular,
         Oxygen_700Bold,
       });
-
 
     function slideIn(){
         Animated.timing(slideAnim, {
@@ -85,7 +82,7 @@ export default function Circuits() {
         }).start()
     }
 
-    
+
     if(!fontsLoaded){
         return null
       } else {
@@ -109,9 +106,7 @@ export default function Circuits() {
                     renderItem={({item})=><ExerciseBar key={circuits.indexOf(item)} index={circuits.indexOf(item)} activity={item} />}
                     contentContainerStyle={{justifyContent: 'center' ,alignItems:'center', paddingBottom: 50}}
                     />
-                
                     :
-                    
                     <Text>Pick some exercises to add to your circuit and get started!</Text>
             }
             <AddButton onPress={slideIn}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
