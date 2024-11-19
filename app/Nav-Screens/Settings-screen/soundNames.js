@@ -1,4 +1,4 @@
-export const soundsList = {
+export default soundsList = {
     bell: '../../../../assets/sounds/bell.mp3',
     airhorn1: '../../../../assets/sounds/airhorn1.mp3',
     airhorn2: '../../../../assets/sounds/airhorn2.mp3',

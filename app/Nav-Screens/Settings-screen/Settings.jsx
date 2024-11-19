@@ -13,10 +13,10 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
 
 // import the settings screens
 
-import { AnimatedSoundsModal } from './Settings-Modals/Sounds';
-import {AnimatedAboutModal} from './Settings-Modals/About';
-import {AnimatedCoffeesModal} from './Settings-Modals/Coffee'
-import {AnimatedFeedbackModal} from './Settings-Modals/Feedback'
+import AnimatedSoundsModal from './Settings-Modals/Sounds';
+import AnimatedAboutModal from './Settings-Modals/About';
+import AnimatedCoffeesModal from './Settings-Modals/Coffee'
+import AnimatedFeedbackModal from './Settings-Modals/Feedback'
 
 const logo = require ('./kofi_symbol.png')
 

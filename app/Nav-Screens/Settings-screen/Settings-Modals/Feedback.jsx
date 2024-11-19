@@ -6,7 +6,7 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
 
 
 
-export const AnimatedFeedbackModal = ({animPos, slideOut}) => {
+export default AnimatedFeedbackModal = ({animPos, slideOut}) => {
 
     return (
 

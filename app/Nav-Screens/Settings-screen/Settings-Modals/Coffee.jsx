@@ -8,7 +8,7 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
 const button = require('../support_me_on_kofi_beige.png')
 
 
-export const AnimatedCoffeesModal = ({animPos, slideOut}) => {
+export default AnimatedCoffeesModal = ({animPos, slideOut}) => {
 
 
 

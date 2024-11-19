@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 
 
 import { CircuitContext } from "../context/circuitContextProvidor";
-import { TimeSelectorScroll } from "./scrollSelector";
+import TimeSelectorScroll from "./scrollSelector";
 
 
 const ActivityContainer = styled.View`
@@ -33,7 +33,7 @@ const ActivityImage = styled.Image`
 `
 
 
-export const ActivityOption = ({route, thisActivity}) => {
+export default ActivityOption = ({route, thisActivity}) => {
 
     
     const {startCircuits, addExercise} = useContext(CircuitContext);

@@ -18,9 +18,9 @@ import Settings from "./Nav-Screens/Settings-screen/Settings";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 
 // import contexts
-import { CircuitContextProvidor } from "./Nav-Screens/Circuits-screen/context/circuitContextProvidor";
-import { TimerContextProvider } from "./Nav-Screens/Timer-screen/context/timerContext";
-import { SettingsContextProvider} from "./Nav-Screens/Settings-screen/settingsContext";
+import CircuitContextProvidor from "./Nav-Screens/Circuits-screen/context/circuitContextProvidor";
+import TimerContextProvider from "./Nav-Screens/Timer-screen/context/timerContext";
+import SettingsContextProvider from "./Nav-Screens/Settings-screen/settingsContext";
 
 
 

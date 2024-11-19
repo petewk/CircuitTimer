@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark';
 
 
-export const AnimatedSoundsModal = ({animPos, slideOut}) => {
+export default AnimatedSoundsModal = ({animPos, slideOut}) => {
 
     const soundOptions = ['bell', 'airhorn1', 'airhorn2', 'buzzer', 'whistle1', 'whistle2', 'whistle3']
     const {theme, soundName, setSoundName} = useContext(SettingsContext);

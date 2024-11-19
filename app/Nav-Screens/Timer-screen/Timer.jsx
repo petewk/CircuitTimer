@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import { Text, View, StyleSheet, TouchableHighlight } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPause } from '@fortawesome/free-solid-svg-icons/faPause';

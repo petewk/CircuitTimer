@@ -6,7 +6,7 @@ import styled from "styled-components/native";
 import { CircuitContext } from "../context/circuitContextProvidor";
 
 
-export const TimeSelectorScroll = ({timerSlide, name}) => {
+export default TimeSelectorScroll = ({timerSlide, name}) => {
 
     const {startCircuits, addExercise} = useContext(CircuitContext);
 

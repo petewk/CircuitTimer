@@ -11,7 +11,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons/faAngleRight'
 import exercises from './exercises'
 
 // import activity option
-import { ActivityOption } from "./activity-option";
+import ActivityOption from "./activity-option";
 
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
@@ -60,7 +60,7 @@ const ButtonsList = styled.FlatList`
 `
 
 
-export const AnimatedSelectionModal = ({slideOut, slideAnim}) => {
+export default AnimatedSelectionModal = ({slideOut, slideAnim}) => {
 
 
 

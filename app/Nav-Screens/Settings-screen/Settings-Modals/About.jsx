@@ -12,7 +12,7 @@ const admobLogo = require('../../../../assets/images/google-admob.png')
 
 
 
-export const AnimatedAboutModal = ({animPos, slideOut}) => {
+export default AnimatedAboutModal = ({animPos, slideOut}) => {
 
     return (
 

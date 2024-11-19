@@ -10,9 +10,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
 
 
 // import components
-import { ExerciseBar } from "./components/exercise-bar";
+import ExerciseBar from "./components/exercise-bar";
 
-import {AnimatedSelectionModal} from "./components/animated-modal";
+import AnimatedSelectionModal from "./components/animated-modal";
 
 // Import context
 import { CircuitContext } from "./context/circuitContextProvidor";

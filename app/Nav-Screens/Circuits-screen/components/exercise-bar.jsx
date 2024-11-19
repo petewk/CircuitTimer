@@ -44,7 +44,7 @@ const ActivityText = styled.Text`
     
 `
 
-export const ExerciseBar = ({activity, index}) => {
+export default ExerciseBar = ({activity, index}) => {
 
     const {circuits, addExercise, deleteExercise} = useContext(CircuitContext);
     const {roundNum, paused, setRoundNum} = useContext(TimerContext)

@@ -8,7 +8,7 @@ export const SettingsContext = createContext();
 export const soundsNames = ['bell', 'airhorn1', 'airhorn2', 'buzzer', 'whistle1', 'whistle2', 'whistle3', 'random']
 
 
-export const SettingsContextProvider = ({children})=>{
+export default SettingsContextProvider = ({children})=>{
 
     const [theme, setTheme] = useState('normal')
     const [soundName, setSoundName] = useState('whistle2')

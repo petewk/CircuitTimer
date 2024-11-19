@@ -15,7 +15,7 @@ export const TimerContext = createContext();
 
 
 
-export const TimerContextProvider = ({children})=>{
+export default TimerContextProvider = ({children})=>{
     
     const { theme, soundName } = useContext(SettingsContext)
     const { circuits } = useContext(CircuitContext)

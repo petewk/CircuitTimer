@@ -7,7 +7,7 @@ export const CircuitContext = createContext();
 
 
 
-export const CircuitContextProvidor = ({children})=>{
+export default CircuitContextProvidor = ({children})=>{
 
     const [circuits, setCircuits] = useState([
         {
