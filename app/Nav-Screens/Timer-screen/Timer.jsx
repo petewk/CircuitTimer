@@ -16,6 +16,8 @@ import { CircuitContext } from "../Circuits-screen/context/circuitContextProvido
 import { SettingsContext } from "../Settings-screen/settingsContext";
 
 
+import BannerAd from '../Ad-Banners/bannerAd';
+
 
 import {
     useFonts,
@@ -125,6 +127,7 @@ export default function Timer({ navigation }) {
                                     <TouchableHighlight activeOpacity={0.9} underlayColor={'#4b7553'} onPress={()=>{setAutoPlay(!autoPlay)}} style={{textAlign: 'center', width: 'inherit', paddingTop: 20, alignItems:'center'}}><FontAwesomeIcon style={{color: '#c4cfc0', fontSize:'20px'}} size={40} icon={faCircleCheck} /></TouchableHighlight>
                             }
                 </View>
+                <BannerAd />
             </View>
         )
     }

@@ -29,10 +29,10 @@ export default CircuitContextProvidor = ({children})=>{
     ])
 
 
-    function addExercise(clicked, duration){
+    function addExercise(exerciseClicked, duration){
         let holderObj = {
             index: circuits.length,
-            exercise: clicked,
+            exercise: exerciseClicked,
             duration: duration
         };
         
@@ -43,7 +43,7 @@ export default CircuitContextProvidor = ({children})=>{
         }
     }
 
-    function deleteExercise(clicked, currentRound, paused){
+    function deleteExercise(exerciseClicked, currentRound, paused){
         let deleteHolder = {
             index: circuits.length,
             exercise: 'Nothing here!',
@@ -54,11 +54,11 @@ export default CircuitContextProvidor = ({children})=>{
             setCircuits([deleteHolder])
         } 
         if(circuits.length > 1){
-            if(clicked <= currentRound && currentRound != 0 && !paused){
+            if(exerciseClicked <= currentRound && currentRound != 0 && !paused){
                 return
             }
             let holderArray = circuits;
-            holderArray.splice(clicked, 1);
+            holderArray.splice(exerciseClicked, 1);
             setCircuits([...holderArray]);
         }
         

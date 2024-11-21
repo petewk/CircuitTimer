@@ -79,8 +79,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         padding: 10,
         justifyContent: 'center',
-        alignContent: 'center'
-
     },
     linkText: {
         textAlign: 'center',
@@ -90,11 +88,9 @@ const styles = StyleSheet.create({
     },
     linkImg: {
         position: 'absolute',
-        left: 'auto',
-        right: 'auto',
         opacity: 0.2,
-        alignSelf: 'center',
         width: 75,
         height: 75,
+        alignSelf: 'center',
     }
 })

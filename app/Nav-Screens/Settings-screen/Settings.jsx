@@ -18,6 +18,9 @@ import AnimatedAboutModal from './Settings-Modals/About';
 import AnimatedCoffeesModal from './Settings-Modals/Coffee'
 import AnimatedFeedbackModal from './Settings-Modals/Feedback'
 
+
+import BannerAd from '../Ad-Banners/bannerAd';
+
 const logo = require ('./kofi_symbol.png')
 
 
@@ -90,6 +93,7 @@ export default function Settings() {
                         <FontAwesomeIcon icon={faQuestion} style={{color: 'white', marginLeft: 30}}/>
                     </>
                 </OptionsButton>
+                <BannerAd />
             </View>
             <AnimatedSoundsModal animPos={soundsPos} slideOut={slideOut}/>
             <AnimatedAboutModal animPos={aboutPos} slideOut={slideOut}/>

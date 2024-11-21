@@ -17,7 +17,7 @@ import AnimatedSelectionModal from "./components/animated-modal";
 // Import context
 import { CircuitContext } from "./context/circuitContextProvidor";
 
-
+import BannerAd from '../Ad-Banners/bannerAd';
 
 import {
     useFonts,
@@ -37,7 +37,7 @@ const AddButton = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     margin: 10px;
-    
+    marginBottom: 70px;
 `
 
 const SetExerciseList = styled.FlatList`
@@ -110,6 +110,7 @@ export default function Circuits() {
                     <Text>Pick some exercises to add to your circuit and get started!</Text>
             }
             <AddButton onPress={slideIn}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
+            <BannerAd />
         </View>
     ) }
 }
