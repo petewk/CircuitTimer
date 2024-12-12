@@ -15,7 +15,7 @@ import { faGear } from '@fortawesome/free-solid-svg-icons/faGear';
 import Circuits from "./Nav-Screens/Circuits-screen/Circuits";
 import Timer from "./Nav-Screens/Timer-screen/Timer";
 import Settings from "./Nav-Screens/Settings-screen/Settings";
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
+
 
 // import contexts
 import CircuitContextProvidor from "./Nav-Screens/Circuits-screen/context/circuitContextProvidor";

@@ -36,7 +36,7 @@ export default CircuitContextProvidor = ({children})=>{
             duration: duration
         };
         
-        if(circuits.length === 1 && circuits[0].exercise === 'Nothing here!'){
+        if(circuits.length === 1 && circuits[0].exercise === 'empty'){
             setCircuits([holderObj])    
         } else {
             setCircuits([...circuits, holderObj])
@@ -46,10 +46,10 @@ export default CircuitContextProvidor = ({children})=>{
     function deleteExercise(exerciseClicked, currentRound, paused){
         let deleteHolder = {
             index: circuits.length,
-            exercise: 'Nothing here!',
+            exercise: 'empty',
             duration: 0
         }
-        if(circuits.length === 1 && circuits[0].exercise !== 'Nothing here!'){
+        if(circuits.length === 1 && circuits[0].exercise !== 'empty'){
             console.log('this?')
             setCircuits([deleteHolder])
         } 
@@ -61,7 +61,6 @@ export default CircuitContextProvidor = ({children})=>{
             holderArray.splice(exerciseClicked, 1);
             setCircuits([...holderArray]);
         }
-        
     }
 
     return (

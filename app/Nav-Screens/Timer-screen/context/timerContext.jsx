@@ -108,7 +108,7 @@ export default TimerContextProvider = ({children})=>{
 
     useEffect(()=>{
         const counter = setTimeout(()=>{
-            if(!paused){
+            if(!paused && circuits.length != 0){
                 if(secondsLeft >= 1){
                     setSeconds(secondsLeft-1);
                 } else {

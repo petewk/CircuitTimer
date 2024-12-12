@@ -1,5 +1,5 @@
-import { useState, useContext, useRef } from "react";
-import { Text, View, Button, StyleSheet, TouchableHighlight, FlatList, Animated, Easing } from "react-native";
+import { useContext, useRef } from "react";
+import { Text, View, Animated, Easing } from "react-native";
 import styled from "styled-components/native";
 
 
@@ -37,7 +37,13 @@ const AddButton = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     margin: 10px;
+<<<<<<< Updated upstream
     marginBottom: 70px;
+=======
+    position: fixed;
+    bottom: 0px;
+    
+>>>>>>> Stashed changes
 `
 
 const SetExerciseList = styled.FlatList`
@@ -47,6 +53,17 @@ const SetExerciseList = styled.FlatList`
     padding-top: 25px;
 `
 
+const EmptyContainer = styled.Text`
+  fontFamily: Oxygen_700Bold;
+  fontSize: 20;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  margin: 50px 0px;
+  height: 70%;
+  padding-bottom: 50;
+  padding-top: 50;
+`
 
 
 
@@ -99,7 +116,7 @@ export default function Circuits() {
             <AnimatedSelectionModal  slideOut={slideOut} slideAnim={slideAnim}/>
             <Text style={{fontFamily: 'Oxygen_700Bold', fontSize: 20, color:'white'}}>Customise your workout</Text>
             {
-                circuits.length > 0 ?
+                circuits[0].exercise !== 'empty' ?
                 <SetExerciseList
     
                     data={circuits} 
@@ -107,7 +124,7 @@ export default function Circuits() {
                     contentContainerStyle={{justifyContent: 'center' ,alignItems:'center', paddingBottom: 50}}
                     />
                     :
-                    <Text>Pick some exercises to add to your circuit and get started!</Text>
+                <EmptyContainer>Click the + button below to start adding exercises to your routine</EmptyContainer>
             }
             <AddButton onPress={slideIn}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
             <BannerAd />
