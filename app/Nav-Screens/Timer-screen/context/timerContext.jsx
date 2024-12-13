@@ -115,7 +115,7 @@ export default TimerContextProvider = ({children})=>{
                     endEx()
                 }
             }
-        }, 500)
+        }, 1000)
     }, [secondsLeft, paused, roundNum])
 
     function restartCircuit(){

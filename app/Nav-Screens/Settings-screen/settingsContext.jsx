@@ -59,13 +59,14 @@ export default SettingsContextProvider = ({children})=>{
     }
 
     const soundsPos = useRef(new Animated.Value(500)).current;
+    const guidePos = useRef(new Animated.Value(500)).current;
     const aboutPos = useRef(new Animated.Value(500)).current;
     const coffeePos = useRef(new Animated.Value(500)).current;
     const feedbackPos = useRef(new Animated.Value(500)).current;
 
 
     return (
-        <SettingsContext.Provider value={{ theme, soundName, setSoundName, slideIn, slideOut, soundsPos, aboutPos, coffeePos, feedbackPos }}>
+        <SettingsContext.Provider value={{ theme, soundName, setSoundName, slideIn, slideOut, guidePos, soundsPos, aboutPos, coffeePos, feedbackPos }}>
             {children}
         </SettingsContext.Provider>
     )

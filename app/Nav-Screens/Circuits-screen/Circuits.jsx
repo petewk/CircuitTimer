@@ -1,11 +1,12 @@
 import { useContext, useRef } from "react";
-import { Text, View, Animated, Easing } from "react-native";
+import { Text, View, Animated, Easing, TouchableOpacity, TouchableHighlight, StyleSheet } from "react-native";
 import styled from "styled-components/native";
 
 
 // import fontAwesome
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
 
 
 
@@ -16,6 +17,7 @@ import AnimatedSelectionModal from "./components/animated-modal";
 
 // Import context
 import { CircuitContext } from "./context/circuitContextProvidor";
+import { SettingsContext } from "../Settings-screen/settingsContext";
 
 import BannerAd from '../Ad-Banners/bannerAd';
 
@@ -37,13 +39,7 @@ const AddButton = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
     margin: 10px;
-<<<<<<< Updated upstream
     marginBottom: 70px;
-=======
-    position: fixed;
-    bottom: 0px;
-    
->>>>>>> Stashed changes
 `
 
 const SetExerciseList = styled.FlatList`
@@ -60,7 +56,7 @@ const EmptyContainer = styled.Text`
   justify-content: center;
   text-align: center;
   margin: 50px 0px;
-  height: 70%;
+  maxHeight: 90%;
   padding-bottom: 50;
   padding-top: 50;
 `
@@ -68,9 +64,10 @@ const EmptyContainer = styled.Text`
 
 
 
-export default function Circuits() {
+export default function Circuits({ navigation }) {
 
     const  {circuits} = useContext(CircuitContext)
+    const {  slideIn, guidePos } = useContext(SettingsContext)
 
     const slideAnim = useRef(new Animated.Value(-500)).current;
     console.log(circuits.length)
@@ -81,7 +78,7 @@ export default function Circuits() {
         Oxygen_700Bold,
       });
 
-    function slideIn(){
+    function slideMenuIn(){
         Animated.timing(slideAnim, {
             toValue: 0,
             duration: 400,
@@ -90,13 +87,18 @@ export default function Circuits() {
         }).start()
     }
 
-    function slideOut(){
+    function slideMenuOut(){
         Animated.timing(slideAnim, {
             toValue: -500,
             duration: 400,
             Easing,
             useNativeDriver: true
         }).start()
+    }
+
+    function toGuide(){
+        navigation.navigate('Settings');
+        slideIn(guidePos)
     }
 
 
@@ -113,7 +115,8 @@ export default function Circuits() {
             backgroundColor: '#4b5975'
           }}
           >
-            <AnimatedSelectionModal  slideOut={slideOut} slideAnim={slideAnim}/>
+            <TouchableHighlight style={styles.toInstructions} activeOpacity={0.4} underlayColor={'#61916b'} onPress={toGuide}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faQuestion} /></TouchableHighlight>
+            <AnimatedSelectionModal  slideOut={slideMenuOut} slideAnim={slideAnim}/>
             <Text style={{fontFamily: 'Oxygen_700Bold', fontSize: 20, color:'white'}}>Customise your workout</Text>
             {
                 circuits[0].exercise !== 'empty' ?
@@ -126,10 +129,19 @@ export default function Circuits() {
                     :
                 <EmptyContainer>Click the + button below to start adding exercises to your routine</EmptyContainer>
             }
-            <AddButton onPress={slideIn}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
+            <AddButton onPress={slideMenuIn}><FontAwesomeIcon style={{color: 'white'}} icon={faPlus} size={30} /></AddButton>
             <BannerAd />
         </View>
     ) }
 }
 
 
+const styles = StyleSheet.create({
+    toInstructions: {
+        position: 'absolute',
+        right: 15,
+        top: 15,
+        padding: 5,
+        borderRadius: 50,
+    },  
+})

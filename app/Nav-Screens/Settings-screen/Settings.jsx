@@ -17,6 +17,7 @@ import AnimatedSoundsModal from './Settings-Modals/Sounds';
 import AnimatedAboutModal from './Settings-Modals/About';
 import AnimatedCoffeesModal from './Settings-Modals/Coffee'
 import AnimatedFeedbackModal from './Settings-Modals/Feedback'
+import AnimatedGuideModal from './Settings-Modals/Guide';
 
 
 import BannerAd from '../Ad-Banners/bannerAd';
@@ -35,7 +36,7 @@ const OptionsWindow = styled.View`
 
 const OptionsButton = styled.TouchableHighlight`
     width: 90%;
-    height: 10%;
+    height: 9%;
     border: 1px solid white;
     border-radius: 15px;
     display: flex;
@@ -43,7 +44,7 @@ const OptionsButton = styled.TouchableHighlight`
     align-items: center;
     justify-content: center;
     flex-basis: space-around;
-    margin: 30px 0px;
+    margin: 25px 0px;
 `
 
 const ButtonText = styled.Text`
@@ -55,7 +56,7 @@ const ButtonText = styled.Text`
 
 export default function Settings() {
 
-    const { theme, soundName, setSoundName, slideIn, slideOut, soundsPos, aboutPos, coffeePos, feedbackPos } = useContext(SettingsContext);
+    const { theme, soundName, setSoundName, slideIn, slideOut, guidePos, soundsPos, aboutPos, coffeePos, feedbackPos } = useContext(SettingsContext);
 
 
     return (
@@ -68,6 +69,12 @@ export default function Settings() {
                 backgroundColor: "#75744b"
             }}
             >
+                <OptionsButton underlayColor={'#9c9a65'} onPress={()=>{slideIn(guidePos)}} id="Guide">
+                    <>
+                        <ButtonText>Guide</ButtonText>
+                        <FontAwesomeIcon icon={faMusic} style={{color: 'white', marginLeft: 30}}/>
+                    </>
+                </OptionsButton>
                 <OptionsButton underlayColor={'#9c9a65'} onPress={()=>{slideIn(soundsPos)}} id="Sounds">
                     <>
                         <ButtonText>Sounds</ButtonText>
@@ -95,6 +102,7 @@ export default function Settings() {
                 </OptionsButton>
                 <BannerAd />
             </View>
+            <AnimatedGuideModal animPos={guidePos} slideOut={slideOut} />
             <AnimatedSoundsModal animPos={soundsPos} slideOut={slideOut}/>
             <AnimatedAboutModal animPos={aboutPos} slideOut={slideOut}/>
             <AnimatedCoffeesModal animPos={coffeePos} slideOut={slideOut}/>

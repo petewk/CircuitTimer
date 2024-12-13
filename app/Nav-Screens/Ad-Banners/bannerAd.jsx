@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 10,
         color: 'white',
-        backgroundColor: 'black',
+        backgroundColor: '#fff2',
         width: 320,
         height: 50,
         borderColor: 'black',
