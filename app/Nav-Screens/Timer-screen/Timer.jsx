@@ -63,7 +63,7 @@ export default function Timer({ navigation }) {
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: flashColors[flash],
-                paddingTop: 30,
+                paddingTop: 10,
                 paddingBottom: 100,
                 fontFamily: 'Oxygen_700Bold'
               }}>

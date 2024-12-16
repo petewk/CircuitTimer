@@ -4,12 +4,12 @@
     "slug": "CircuitTimer",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/thumblogo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/circuits.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
