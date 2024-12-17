@@ -20,14 +20,14 @@ export default TimeSelectorScroll = ({timerSlide, name}) => {
 
     return (
         <>
-        <View style={{height: 80}}>
+        <View style={{height: 80, borderTopColor: 'black', borderTopWidth: 2}}>
         
         
         <ScrollView
         contentContainerStyle={{
             width: 100,
             position: 'relative',
-            borderColor: 'white',
+            borderColor: '#777780',
             borderStyle: 'dotted',
             borderWidth: 3,
             borderBottomWidth: 0,
@@ -49,8 +49,8 @@ export default TimeSelectorScroll = ({timerSlide, name}) => {
                     return(
                     <>
                     
-                        <TouchableHighlight onPress={()=>{timeClick(time, name)}} underlayColor={'#3f6350'} activeOpacity={0.9} key={time} >
-                            <Text style={{textAlign: 'center', fontSize:40, color: 'white'}}>{time}s</Text>    
+                        <TouchableHighlight style={{borderBottomColor: '#141414', borderStyle: 'inset', borderTopWidth: 1, borderBottomWidth: 1, borderTopColor: '#6e6a6a'}} onPress={()=>{timeClick(time, name)}} underlayColor={'#3f6350'} activeOpacity={0.9} key={time} >
+                            <Text style={{textAlign: 'center', fontSize:35, color: 'white'}}>{time}s</Text>    
                         </TouchableHighlight>
                     </>
                     )

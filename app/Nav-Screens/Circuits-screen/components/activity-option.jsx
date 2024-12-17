@@ -9,7 +9,7 @@ import TimeSelectorScroll from "./scrollSelector";
 
 const ActivityContainer = styled.View`
     width: 100px;
-    height: 100px;
+    height: 110px;
     margin: 10px;
     color: white;   
     padding-top: 0px;
@@ -19,10 +19,11 @@ const ActivityContainer = styled.View`
 
 const ActivitySection = styled.TouchableHighlight`
     width: 100px;
-    height: 100px;
+    height: 110px;
     justify-content: center;
     align-content: center;
     align-items: center;
+    margin-top: 15px;
 `
 
 const ActivityImage = styled.Image`
