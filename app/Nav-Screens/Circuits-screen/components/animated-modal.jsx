@@ -123,9 +123,9 @@ export default AnimatedSelectionModal = ({slideOut, slideAnim}) => {
             borderRadius: 5,
         }}>
                 <InnerContainer>
-                <TouchableHighlight style={styles.close}  onPress={()=>{slideOut()}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
+                    <TouchableHighlight style={styles.close}  onPress={()=>{slideOut()}}><FontAwesomeIcon style={{color: '#c4cfc0'}} size={20} icon={faCircleXmark} /></TouchableHighlight>
                     <ButtonsList
-                    contentContainerStyle={{alignItems:'center'}}
+                    contentContainerStyle={{alignItems:'center', flexGrow: 0}}
                     renderItem={({item})=><ActivityOption route={routes[item.replace(/\s+/g, '').toLowerCase()]} thisActivity={item}/>}
                     data={itemstoShow} 
                     numColumns={3}

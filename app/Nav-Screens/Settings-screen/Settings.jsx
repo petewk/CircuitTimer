@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
 import { faMusic } from '@fortawesome/free-solid-svg-icons/faMusic';
 import { faQuestion } from '@fortawesome/free-solid-svg-icons/faQuestion';
+import { faInfo } from '@fortawesome/free-solid-svg-icons/faInfo';
 
 
 // import the settings screens
@@ -44,7 +45,7 @@ const OptionsButton = styled.TouchableHighlight`
     align-items: center;
     justify-content: center;
     flex-basis: space-around;
-    margin: 25px 0px;
+    margin: 10px 0px;
 `
 
 const ButtonText = styled.Text`
@@ -64,15 +65,16 @@ export default function Settings() {
             <View
             style={{
                 flex: 1,
-                justifyContent: "center",
+                justifyContent: "space-evenly",
                 alignItems: "center",
-                backgroundColor: "#75744b"
+                backgroundColor: "#75744b",
+                paddingBottom: '20%'
             }}
             >
                 <OptionsButton underlayColor={'#9c9a65'} onPress={()=>{slideIn(guidePos)}} id="Guide">
                     <>
                         <ButtonText>Guide</ButtonText>
-                        <FontAwesomeIcon icon={faMusic} style={{color: 'white', marginLeft: 30}}/>
+                        <FontAwesomeIcon icon={faInfo} style={{color: 'white', marginLeft: 30}}/>
                     </>
                 </OptionsButton>
                 <OptionsButton underlayColor={'#9c9a65'} onPress={()=>{slideIn(soundsPos)}} id="Sounds">
