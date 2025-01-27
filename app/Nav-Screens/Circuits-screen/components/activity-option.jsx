@@ -19,7 +19,7 @@ const ActivityContainer = styled.View`
 
 const ActivitySection = styled.TouchableHighlight`
     width: 100px;
-    height: 110px;
+    height: 100px;
     justify-content: center;
     align-content: center;
     align-items: center;

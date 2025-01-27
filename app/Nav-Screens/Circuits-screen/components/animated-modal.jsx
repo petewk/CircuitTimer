@@ -71,14 +71,14 @@ export default AnimatedSelectionModal = ({slideOut, slideAnim}) => {
     let itemstoShow = exercises.slice((currentPage -1)*12, currentPage * 12)
     
     function pageDown(){
-        holder = currentPage-1;
+        let holder = currentPage-1;
         if(currentPage > 1){
             setCurrentPage(holder)
         }
     }
     
     function pageUp(){
-        holder = currentPage +1;
+        let holder = currentPage +1;
         if(exercises.length > 12*currentPage){
             setCurrentPage(holder)
         }
